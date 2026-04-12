@@ -813,6 +813,126 @@
       transition: color 0.4s;
     }
 
+
+    #problems {
+      background: var(--bg2);
+    }
+
+    .problems-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .problem-box,
+    .solution-box,
+    .framework-card {
+      background: var(--white);
+      border: 1px solid rgba(13, 27, 42, 0.06);
+      border-radius: 4px;
+      padding: 2.2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .problem-box {
+      border-left: 3px solid #d97706;
+    }
+
+    .solution-box {
+      border-left: 3px solid #16a34a;
+    }
+
+    .problem-list,
+    .solution-list,
+    .framework-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .problem-list li,
+    .solution-list li,
+    .framework-list li {
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: var(--text2);
+      display: flex;
+      gap: 0.8rem;
+      align-items: flex-start;
+    }
+
+    .problem-list li i {
+      color: #d97706;
+      margin-top: 0.32rem;
+    }
+
+    .solution-list li i,
+    .framework-list li i {
+      color: #16a34a;
+      margin-top: 0.32rem;
+    }
+
+    #framework {
+      background: var(--white);
+    }
+
+    .framework-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 2rem;
+      align-items: stretch;
+    }
+
+    .framework-card h3,
+    .problem-box h3,
+    .solution-box h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+
+    .framework-card p {
+      color: var(--text2);
+      font-size: 0.94rem;
+      line-height: 1.8;
+      margin-bottom: 1.2rem;
+    }
+
+    .framework-note {
+      background: linear-gradient(135deg, rgba(26, 92, 255, 0.04), rgba(200, 169, 110, 0.08));
+      border: 1px solid var(--gold-border);
+      border-radius: 4px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .framework-note .mini-tag {
+      font-size: 0.68rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+
+    .framework-note h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      color: var(--navy);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .framework-note p {
+      color: var(--text2);
+      font-size: 0.94rem;
+      line-height: 1.8;
+    }
+
     #projects {
       background: var(--bg);
     }
@@ -1665,7 +1785,9 @@
       .skills-layout,
       .exp-grid,
       .about-layout,
-      .contact-layout {
+      .contact-layout,
+      .problems-layout,
+      .framework-grid {
         grid-template-columns: 1fr;
         gap: 2.5rem;
       }
@@ -1842,12 +1964,12 @@
 
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
+      <li><a href="#problems">Problems I Solve</a></li>
+      <li><a href="#framework">Framework</a></li>
       <li><a href="#projects">Projects</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#experience">Experience</a></li>
       <li><a href="blog.html">Case Studies</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#contact" class="nav-cta">Hire Me</a></li>
+      <li><a href="#contact" class="nav-cta">Free Audit</a></li>
     </ul>
 
     <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
@@ -1869,14 +1991,14 @@
 
     <ul class="mobile-menu-links">
       <li><a href="#services">Services</a></li>
+      <li><a href="#problems">Problems I Solve</a></li>
+      <li><a href="#framework">Framework</a></li>
       <li><a href="#projects">Projects</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#experience">Experience</a></li>
       <li><a href="blog.html">Case Studies</a></li>
       <li><a href="#about">About</a></li>
     </ul>
 
-    <a href="#contact" class="mobile-hire-btn">Hire Me</a>
+    <a href="#contact" class="mobile-hire-btn">Get Free Audit</a>
   </div>
 
   <section id="hero">
@@ -1890,8 +2012,8 @@
       <h1 class="hero-name">Rajkumar<br><em>Khatua</em></h1>
       <div class="hero-divider"></div>
       <p class="hero-tagline">I turn your <strong>Zoho data</strong><br>into decisions.</p>
-      <p class="hero-desc">Helping leadership teams across all industries make smarter, faster decisions through
-        Zoho-powered BI frameworks and executive analytics.</p>
+      <p class="hero-desc">Helping service businesses and Zoho-powered teams replace spreadsheet chaos with
+        decision-ready dashboards, ROI visibility, and automated reporting systems.</p>
 
       <div class="hero-stats">
         <div>
@@ -1911,8 +2033,8 @@
       </div>
 
       <div class="hero-btns">
-        <a href="#contact" class="btn-dark"><i class="fa-solid fa-handshake"></i> Hire Me</a>
-        <a href="#projects" class="btn-outline"><i class="fa-solid fa-chart-column"></i> View Projects</a>
+        <a href="#contact" class="btn-dark"><i class="fa-solid fa-magnifying-glass-chart"></i> Get Free Audit</a>
+        <a href="#projects" class="btn-outline"><i class="fa-solid fa-chart-column"></i> View Solutions</a>
       </div>
     </div>
 
@@ -1942,8 +2064,8 @@
       <h2 class="section-title">Services I <em>Offer</em></h2>
     </div>
     <div class="reveal reveal-delay-2">
-      <p class="section-sub">End-to-end BI solutions built on the Zoho ecosystem — from data architecture to executive
-        dashboards.</p>
+      <p class="section-sub">Business-focused Zoho Analytics solutions designed to eliminate reporting bottlenecks,
+        connect disconnected systems, and give leadership teams real visibility.</p>
     </div>
 
     <div class="services-grid reveal reveal-delay-3">
@@ -1974,6 +2096,91 @@
     </div>
   </section>
 
+  <section id="problems">
+    <div class="reveal">
+      <div class="section-tag">Business Problems</div>
+    </div>
+    <div class="reveal reveal-delay-1">
+      <h2 class="section-title">Problems I <em>Solve</em></h2>
+    </div>
+    <div class="reveal reveal-delay-2">
+      <p class="section-sub">I help businesses fix reporting friction, blind spots, and disconnected Zoho data before
+        they become management problems.</p>
+    </div>
+
+    <div class="problems-layout">
+      <div class="problem-box reveal">
+        <h3>What usually feels broken</h3>
+        <ul class="problem-list">
+          <li><i class="fa-solid fa-triangle-exclamation"></i><span>Leadership still depends on spreadsheets to
+              understand performance.</span></li>
+          <li><i class="fa-solid fa-triangle-exclamation"></i><span>Zoho CRM, Books, Projects, Inventory, or Creator
+              data lives in silos.</span></li>
+          <li><i class="fa-solid fa-triangle-exclamation"></i><span>Reporting takes hours every week and still arrives
+              too late to act on.</span></li>
+          <li><i class="fa-solid fa-triangle-exclamation"></i><span>No clear visibility into profitability by team,
+              product, customer, or service line.</span></li>
+          <li><i class="fa-solid fa-triangle-exclamation"></i><span>Executives see numbers, but not the operational
+              story behind them.</span></li>
+        </ul>
+      </div>
+
+      <div class="solution-box reveal reveal-delay-1">
+        <h3>What I build instead</h3>
+        <ul class="solution-list">
+          <li><i class="fa-solid fa-circle-check"></i><span>Unified Zoho Analytics dashboards built around business
+              decisions, not vanity charts.</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span>Automated reporting systems that cut manual effort and
+              reduce turnaround time.</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span>ROI, margin, productivity, and KPI frameworks tailored to
+              how your business actually runs.</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span>Cross-functional visibility across sales, finance,
+              operations, and service delivery.</span></li>
+          <li><i class="fa-solid fa-circle-check"></i><span>Executive-ready insight layers that show what matters, what
+              changed, and what to do next.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="framework">
+    <div class="reveal">
+      <div class="section-tag">Signature Approach</div>
+    </div>
+    <div class="reveal reveal-delay-1">
+      <h2 class="section-title">ROI Intelligence <em>Framework</em></h2>
+    </div>
+    <div class="reveal reveal-delay-2">
+      <p class="section-sub">I do not build dashboards in isolation. I design decision systems that turn Zoho data into
+        commercial clarity.</p>
+    </div>
+
+    <div class="framework-grid">
+      <div class="framework-card reveal">
+        <h3>How the framework works</h3>
+        <p>Every engagement starts with the business question first, then the data architecture. That means the final
+          dashboard is not just visually clean — it actually answers the questions leadership teams care about.</p>
+        <ul class="framework-list">
+          <li><i class="fa-solid fa-check"></i><span>Connect data across Zoho CRM, Books, Projects, Inventory, Creator,
+              and other sources.</span></li>
+          <li><i class="fa-solid fa-check"></i><span>Define the KPIs, financial logic, and decision rules that matter to
+              the business.</span></li>
+          <li><i class="fa-solid fa-check"></i><span>Model the data with SQL and automation so reporting stays reliable
+              and scalable.</span></li>
+          <li><i class="fa-solid fa-check"></i><span>Deliver executive dashboards that highlight ROI, risk, bottlenecks,
+              and growth levers.</span></li>
+        </ul>
+      </div>
+
+      <div class="framework-note reveal reveal-delay-1">
+        <div class="mini-tag">Why this matters</div>
+        <h3>Less dashboard theatre. More business clarity.</h3>
+        <p>Pretty charts are easy. Building a BI system that reduces manual reporting, surfaces profitability, and helps
+          leaders make faster decisions — that is the actual job. That is where I focus.</p>
+      </div>
+    </div>
+  </section>
+
   <section id="projects">
     <div class="reveal">
       <div class="section-tag">Case Studies</div>
@@ -1982,8 +2189,8 @@
       <h2 class="section-title">Featured <em>Projects</em></h2>
     </div>
     <div class="reveal reveal-delay-2">
-      <p class="section-sub">Real BI solutions built to solve real business problems — from manufacturing intelligence
-        to financial analytics.</p>
+      <p class="section-sub">Proof-of-work projects focused on visibility, profitability, performance tracking, and
+        smarter executive decisions.</p>
     </div>
 
     <div class="projects-grid">
@@ -2011,7 +2218,7 @@
           </ul>
         </div>
         <div class="project-foot">
-          <a href="#contact" class="demo-btn"><i class="fa-solid fa-play"></i> Request Live Demo</a>
+          <a href="#contact" class="demo-btn"><i class="fa-solid fa-play"></i> Discuss Your Use Case</a>
         </div>
       </div>
 
@@ -2037,7 +2244,7 @@
           </ul>
         </div>
         <div class="project-foot">
-          <a href="#contact" class="demo-btn"><i class="fa-solid fa-play"></i> Request Live Demo</a>
+          <a href="#contact" class="demo-btn"><i class="fa-solid fa-play"></i> Discuss Your Use Case</a>
         </div>
       </div>
 
@@ -2062,7 +2269,7 @@
           </ul>
         </div>
         <div class="project-foot">
-          <a href="#contact" class="demo-btn"><i class="fa-solid fa-play"></i> Request Live Demo</a>
+          <a href="#contact" class="demo-btn"><i class="fa-solid fa-play"></i> Discuss Your Use Case</a>
         </div>
       </div>
 
@@ -2087,7 +2294,7 @@
           </ul>
         </div>
         <div class="project-foot">
-          <a href="#contact" class="demo-btn"><i class="fa-regular fa-comment"></i> Discuss This Project</a>
+          <a href="#contact" class="demo-btn"><i class="fa-regular fa-comment"></i> Book a Strategy Chat</a>
         </div>
       </div>
 
@@ -2111,7 +2318,7 @@
           </ul>
         </div>
         <div class="project-foot">
-          <a href="#contact" class="demo-btn"><i class="fa-regular fa-comment"></i> Discuss This Project</a>
+          <a href="#contact" class="demo-btn"><i class="fa-regular fa-comment"></i> Book a Strategy Chat</a>
         </div>
       </div>
 
@@ -2136,7 +2343,7 @@
           </ul>
         </div>
         <div class="project-foot">
-          <a href="#contact" class="demo-btn"><i class="fa-regular fa-comment"></i> Discuss This Project</a>
+          <a href="#contact" class="demo-btn"><i class="fa-regular fa-comment"></i> Book a Strategy Chat</a>
         </div>
       </div>
     </div>
@@ -2332,39 +2539,61 @@
 
   <section id="testimonials">
     <div class="reveal">
-      <div class="section-tag">Social Proof</div>
+      <div class="section-tag">Client Trust</div>
     </div>
     <div class="reveal reveal-delay-1">
-      <h2 class="section-title">What People <em>Say</em></h2>
+      <h2 class="section-title">Trusted by <em>Leaders & Teams</em></h2>
     </div>
     <div class="reveal reveal-delay-2">
-      <p class="section-sub">Words from the people I've had the privilege of working with.</p>
+      <p class="section-sub">Feedback from supervisors, founders, and teammates who have seen my work translate
+        technical complexity into business clarity.</p>
     </div>
 
     <div class="t-grid">
       <div class="t-card reveal">
         <div class="t-quote">"</div>
-        <p class="t-text">Rajkumar has a strong technical skill set, particularly when it comes to SQL tables, analytics
-          engines, and Deluge scripting. He approaches complex problems with a thoughtful, methodical mindset and is
-          able to translate business needs into clean, effective technical solutions. What really sets him apart is his
-          attitude — polite, humble, and always open to learning.</p>
+        <p class="t-text">I had the opportunity to directly supervise Raj at BMI, and I can say with confidence that he
+          is one of the most dependable and capable people I worked with. He combines strong analytical ability with a
+          thoughtful, steady approach to his work. What impressed me most was that he consistently looked beyond the
+          immediate task to understand the broader business need. Raj improved clarity, supported better decisions, and
+          contributed in a meaningful way.</p>
         <div class="t-author">
-          <div class="t-avatar">ZD</div>
+          <div class="t-avatar">EC</div>
           <div>
-            <div class="t-name">Zachary Dugan</div>
-            <div class="t-role">Founder — Northforge Solutions</div>
+            <div class="t-name">Eric Carey</div>
+            <div class="t-role">Revenue Operations &amp; Business Systems Leader · Supervisor</div>
           </div>
         </div>
       </div>
 
-      <div class="t-card t-pending reveal reveal-delay-1">
+      <div class="t-card reveal reveal-delay-1">
         <div class="t-quote">"</div>
-        <p class="t-text" style="font-style:normal;color:rgba(26,26,46,0.25);">More recommendations coming soon...</p>
+        <p class="t-text">I had the pleasure of working with Rajkumar for about two years at BMI, and he consistently
+          stood out as a highly capable and dependable team member. He has a strong technical skill set, particularly in
+          SQL tables, analytics engines, and Deluge scripting. He approaches complex problems with a thoughtful,
+          methodical mindset and translates business needs into clean, effective technical solutions. Beyond his
+          technical abilities, what really sets him apart is his attitude — polite, humble, collaborative, and always
+          open to learning.</p>
         <div class="t-author">
-          <div class="t-avatar" style="background:rgba(13,27,42,0.1);color:rgba(13,27,42,0.3);">+</div>
+          <div class="t-avatar">ZD</div>
           <div>
-            <div class="t-name" style="color:rgba(13,27,42,0.3);">Your Name Here</div>
-            <div class="t-role">Work with me to add yours</div>
+            <div class="t-name">Zachary Dugan</div>
+            <div class="t-role">Founder · Northforge Solutions</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-card reveal reveal-delay-2">
+        <div class="t-quote">"</div>
+        <p class="t-text">Rajkumar is a very talented IT professional, especially in developing complex dashboards in
+          analytics tools such as Zoho Analytics. He orchestrated the development of several dashboards for management
+          and multiple departments to support decision-making. Raj is dedicated, trustworthy, proactive, and knows how
+          to solve problems.</p>
+        <div class="t-author">
+          <div class="t-avatar">GR</div>
+          <div>
+            <div class="t-name">German Rivera Medina</div>
+            <div class="t-role">Financial Analyst · Worked on the same team</div>
           </div>
         </div>
       </div>
@@ -2376,15 +2605,15 @@
       <div class="section-tag">Get In Touch</div>
     </div>
     <div class="reveal reveal-delay-1">
-      <h2 class="section-title">Let's <em>Work Together</em></h2>
+      <h2 class="section-title">Get Your Free <em>Zoho Audit</em></h2>
     </div>
 
     <div class="contact-layout">
       <div class="reveal">
         <p class="contact-intro">
           Need <strong>executive dashboards</strong>, <strong>reporting automation</strong>, or a stronger
-          <strong>Zoho data strategy</strong>? Whether you're exploring a live demo or scoping a full BI solution,
-          I'd love to hear what you're building.
+          <strong>Zoho data strategy</strong>? Tell me where your visibility is breaking down, and I will review your
+          setup to identify the biggest reporting, profitability, and decision-making gaps.
         </p>
 
         <div class="contact-items">
@@ -2424,26 +2653,27 @@
           <div class="form-group">
             <label class="form-label" for="subject">Subject</label>
             <input type="text" id="subject" name="subject" class="form-input"
-              placeholder="Live Demo Request / Project Enquiry" required />
+              placeholder="Free Audit / Dashboard Project / Zoho Reporting Fix" required />
           </div>
 
           <div class="form-group">
             <label class="form-label" for="message">Message</label>
             <textarea id="message" name="message" class="form-textarea"
-              placeholder="Tell me about your project or request a live demo..." required></textarea>
+              placeholder="Tell me what feels broken: reporting delays, disconnected Zoho apps, poor visibility, ROI tracking, manual exports, or anything else..."
+              required></textarea>
           </div>
 
           <input type="hidden" name="_subject" value="New enquiry from rajkumarkhatua.com" />
           <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
 
           <button type="submit" class="form-submit" id="formSubmitBtn">
-            <i class="fa-solid fa-paper-plane"></i> Send Message
+            <i class="fa-solid fa-paper-plane"></i> Request Free Audit
           </button>
         </form>
 
         <div class="form-success" id="formSuccess">
           <i class="fa-solid fa-circle-check"></i>
-          Message sent successfully. Rajkumar will get back to you shortly.
+          Audit request sent successfully. Rajkumar will get back to you shortly.
         </div>
 
         <div class="form-success" id="formError" style="display:none;">
@@ -2456,7 +2686,7 @@
 
   <footer>
     <div class="footer-logo">Rajkumar Khatua<span>.</span></div>
-    <div class="footer-right">© 2026 · BI & Zoho Analytics Specialist · Kolkata, India</div>
+    <div class="footer-right">© 2026 · BI Systems for Zoho-Powered Businesses · Kolkata, India</div>
   </footer>
 
   <script>
@@ -2606,7 +2836,7 @@
           return;
         }
 
-        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Submitting...';
         submitBtn.disabled = true;
 
         try {
@@ -2633,7 +2863,7 @@
           }
         } catch (error) {
           errorBox.style.display = 'block';
-          submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Message';
+          submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Request Free Audit';
           submitBtn.disabled = false;
         }
       });
