@@ -5,7 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rajkumar Khatua — BI & Zoho Analytics Specialist</title>
-
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+  <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-512.png">
   <!-- Primary SEO -->
   <meta name="description"
     content="Rajkumar Khatua is a Zoho Analytics Specialist & Zoho BI Consultant helping businesses make smarter decisions through Zoho Analytics dashboards, Zoho CRM, Zoho Books, Zoho Inventory & Zoho Creator integrations. Available for freelance & remote work globally." />
@@ -42,6 +43,9 @@
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
 
   <!-- JSON-LD Schema -->
+  <script type="text/javascript"
+    src="https://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=P6Ljk2sT1K2c_e93aTlOIpjhzcjdkK7BJOkx8AJdwuAIH2RVvhRFQgY9bkIYZ2l53QbGKCeGIetAQU7ywuQ9jKPp4c56pJjCzLgegrymKc9QFFYvq-fBtINK2-iVDMpo8qatff6HZhRgj81J7Lhw4t7-9vscBjxlLouVWRaF3T-oCdC8jf2d4Srht4tEpBDZCCzCuXViu3ZDCOB5ASvy5EUGwCovvfusqyPLvweFWUhdCzAe6WYQgc5sZX4V47ZEZaAEMiblLq_3n03UB-zBjA"
+    charset="UTF-8"></script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -631,6 +635,38 @@
     .demo-btn:hover,
     .form-submit:hover {
       box-shadow: 0 10px 24px rgba(13, 27, 42, 0.12);
+    }
+
+    .sticky-cta {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      background: var(--accent);
+      color: var(--navy);
+      padding: 0.8rem 1.2rem;
+      border-radius: 6px;
+      border: none;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 10px 30px rgba(13, 27, 42, 0.15);
+      z-index: 9999;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+
+    .sticky-cta:hover {
+      background: var(--accent2);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 40px rgba(13, 27, 42, 0.25);
     }
 
     .hero-right {
@@ -1808,6 +1844,14 @@
     }
 
     @media (max-width: 768px) {
+
+      .sticky-cta {
+        right: 16px;
+        bottom: 16px;
+        padding: 0.8rem 1rem;
+        font-size: 0.75rem;
+      }
+
       .menu-toggle {
         display: flex !important;
       }
@@ -1951,8 +1995,18 @@
       .highlights {
         grid-template-columns: 1fr;
       }
+
+      .sticky-cta {
+        right: 16px;
+        bottom: 16px;
+        padding: 0.8rem 1rem;
+        font-size: 0.74rem;
+      }
     }
   </style>
+  <!-- Calendly -->
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+
 </head>
 
 <body>
@@ -1969,7 +2023,7 @@
       <li><a href="#projects">Projects</a></li>
       <li><a href="blog.html">Case Studies</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#contact" class="nav-cta">Free Audit</a></li>
+      <li><a href="#" class="nav-cta" id="navFreeAuditBtn">Free Audit</a></li>
     </ul>
 
     <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
@@ -2689,6 +2743,13 @@
     <div class="footer-right">© 2026 · BI Systems for Zoho-Powered Businesses · Kolkata, India</div>
   </footer>
 
+
+
+  <button type="button" class="sticky-cta" id="freeAuditBtn" aria-label="Open free audit booking popup">
+    <i class="fa-solid fa-magnifying-glass-chart"></i>
+    Request Free Audit
+  </button>
+
   <script>
     const cursor = document.getElementById('cursor');
     const cursorRing = document.getElementById('cursorRing');
@@ -2808,6 +2869,22 @@
     window.addEventListener('scroll', runHeroStats);
     window.addEventListener('load', runHeroStats);
 
+
+
+    const stickyCta = document.getElementById('stickyCta');
+
+    function toggleStickyCta() {
+      if (!stickyCta) return;
+      if (window.scrollY > 420) {
+        stickyCta.classList.add('visible');
+      } else {
+        stickyCta.classList.remove('visible');
+      }
+    }
+
+    window.addEventListener('scroll', toggleStickyCta);
+    window.addEventListener('load', toggleStickyCta);
+
     // Formspree form
     const form = document.getElementById('contactForm');
     const success = document.getElementById('formSuccess');
@@ -2908,6 +2985,105 @@
         closeMenu();
       }
     });
+
+    // Calendly popup launcher
+    const freeAuditBtn = document.getElementById('freeAuditBtn');
+
+    const toggleFreeAuditBtn = () => {
+      if (!freeAuditBtn) return;
+      if (window.scrollY > 400) {
+        freeAuditBtn.style.opacity = '1';
+        freeAuditBtn.style.pointerEvents = 'auto';
+      } else {
+        freeAuditBtn.style.opacity = '0';
+        freeAuditBtn.style.pointerEvents = 'none';
+      }
+    };
+
+    toggleFreeAuditBtn();
+    window.addEventListener('scroll', toggleFreeAuditBtn);
+
+    if (freeAuditBtn) {
+      freeAuditBtn.addEventListener('click', () => {
+        if (typeof Calendly !== 'undefined' && typeof Calendly.initPopupWidget === 'function') {
+          Calendly.initPopupWidget({ url: 'https://calendly.com/work-rajkumarkhatua/30min' });
+        } else {
+          window.open('https://calendly.com/work-rajkumarkhatua/30min', '_blank', 'noopener');
+        }
+      });
+    }
+  </script>
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+  <script>
+    const freeAuditBtn = document.getElementById('freeAuditBtn');
+    const navFreeAuditBtn = document.getElementById('navFreeAuditBtn');
+    const calendlyUrl = 'https://calendly.com/work-rajkumarkhatua/30min';
+
+    function toggleFreeAuditBtn() {
+      if (!freeAuditBtn) return;
+      if (freeAuditBtn.classList.contains('hidden-during-calendly')) return;
+
+      if (window.scrollY > 400) {
+        freeAuditBtn.style.opacity = '1';
+        freeAuditBtn.style.pointerEvents = 'auto';
+      } else {
+        freeAuditBtn.style.opacity = '0';
+        freeAuditBtn.style.pointerEvents = 'none';
+      }
+    }
+
+    function hideFreeAuditBtn() {
+      if (!freeAuditBtn) return;
+      freeAuditBtn.classList.add('hidden-during-calendly');
+      freeAuditBtn.style.opacity = '0';
+      freeAuditBtn.style.pointerEvents = 'none';
+    }
+
+    function showFreeAuditBtn() {
+      if (!freeAuditBtn) return;
+      freeAuditBtn.classList.remove('hidden-during-calendly');
+      toggleFreeAuditBtn();
+    }
+
+    function watchCalendlyClose() {
+      const closeWatcher = setInterval(() => {
+        const calendlyPopup =
+          document.querySelector('.calendly-overlay') ||
+          document.querySelector('.calendly-popup') ||
+          document.querySelector('.calendly-popup-content');
+
+        if (!calendlyPopup) {
+          clearInterval(closeWatcher);
+          showFreeAuditBtn();
+        }
+      }, 500);
+    }
+
+    function openCalendlyPopup(e) {
+      if (e) e.preventDefault();
+      hideFreeAuditBtn();
+
+      if (typeof Calendly !== 'undefined' && typeof Calendly.initPopupWidget === 'function') {
+        Calendly.initPopupWidget({ url: calendlyUrl });
+        setTimeout(watchCalendlyClose, 800);
+      } else {
+        showFreeAuditBtn();
+        window.open(calendlyUrl, '_blank', 'noopener');
+      }
+    }
+
+    window.addEventListener('scroll', toggleFreeAuditBtn);
+    window.addEventListener('load', toggleFreeAuditBtn);
+
+    if (freeAuditBtn) {
+      freeAuditBtn.addEventListener('click', openCalendlyPopup);
+    }
+
+    if (navFreeAuditBtn) {
+      navFreeAuditBtn.addEventListener('click', openCalendlyPopup);
+    }
   </script>
 </body>
 
