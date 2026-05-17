@@ -8,6 +8,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://kj3bgy2n.api.sanity.io" crossorigin />
+    <link rel="preconnect" href="https://cdn.sanity.io" crossorigin />
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500;600&display=swap"
         rel="stylesheet" />
@@ -637,12 +639,13 @@
 
             <ul class="nav-links">
                 <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#problems">Problems I Solve</a></li>
+                <li><a href="index.html#framework">Framework</a></li>
                 <li><a href="index.html#projects">Projects</a></li>
-                <li><a href="index.html#skills">Skills</a></li>
-                <li><a href="index.html#experience">Experience</a></li>
                 <li><a href="index.html#about">About</a></li>
                 <li><a href="blog.html" class="active">Case Studies</a></li>
-                <li><a href="index.html#contact" class="nav-cta">Hire Me</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="#" class="nav-cta" id="navFreeAuditBtn">Free Audit</a></li>
             </ul>
 
             <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
@@ -665,14 +668,15 @@
 
         <ul class="mobile-menu-links">
             <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#problems">Problems I Solve</a></li>
+            <li><a href="index.html#framework">Framework</a></li>
             <li><a href="index.html#projects">Projects</a></li>
-            <li><a href="index.html#skills">Skills</a></li>
-            <li><a href="index.html#experience">Experience</a></li>
             <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
             <li><a href="blog.html">Case Studies</a></li>
         </ul>
 
-        <a href="index.html#contact" class="mobile-hire-btn">Hire Me</a>
+        <a href="#" class="mobile-hire-btn" id="mobileFreeAuditBtn">Get Free Audit</a>
     </div>
 
     <section class="article-shell">
@@ -710,7 +714,7 @@
     <footer>
         <div class="footer-inner">
             <div class="footer-logo">Rajkumar Khatua<span>.</span></div>
-            <div class="footer-right">© 2026 · BI & Zoho Analytics Specialist · Kolkata, India</div>
+            <div class="footer-right">© 2026 | BI & Zoho Analytics Specialist | Kolkata, India</div>
         </div>
     </footer>
 
@@ -743,6 +747,12 @@
                 month: 'short',
                 day: 'numeric'
             });
+        }
+
+        function optimizeSanityImage(url) {
+            if (!url) return '';
+            const separator = url.includes('?') ? '&' : '?';
+            return `${url}${separator}auto=format&fit=max&w=1400`;
         }
 
         function escapeHtml(text) {
@@ -875,8 +885,10 @@
                 }
 
                 if (post.coverImage?.asset?.url) {
-                    postImage.src = post.coverImage.asset.url;
+                    postImage.src = optimizeSanityImage(post.coverImage.asset.url);
                     postImage.alt = post.title || 'Case study cover image';
+                    postImage.loading = 'eager';
+                    postImage.decoding = 'async';
                     coverWrap.style.display = 'block';
                 }
 
@@ -923,6 +935,75 @@
         document.querySelectorAll('.mobile-menu-links a, .mobile-hire-btn').forEach(link => {
             link.addEventListener('click', closeMenu);
         });
+    </script>
+
+    <script>
+        const navFreeAuditBtn = document.getElementById('navFreeAuditBtn');
+        const mobileFreeAuditBtn = document.getElementById('mobileFreeAuditBtn');
+        const calendlyUrl = 'https://calendly.com/work-rajkumarkhatua/30min';
+        let calendlyLoaderPromise;
+
+        function ensureCalendly() {
+            if (typeof Calendly !== 'undefined' && typeof Calendly.initPopupWidget === 'function') {
+                return Promise.resolve(Calendly);
+            }
+
+            if (calendlyLoaderPromise) {
+                return calendlyLoaderPromise;
+            }
+
+            calendlyLoaderPromise = new Promise((resolve, reject) => {
+                if (!document.querySelector('link[data-calendly-widget]')) {
+                    const link = document.createElement('link');
+                    link.rel = 'stylesheet';
+                    link.href = 'https://assets.calendly.com/assets/external/widget.css';
+                    link.dataset.calendlyWidget = 'true';
+                    document.head.appendChild(link);
+                }
+
+                const existingScript = document.querySelector('script[data-calendly-widget]');
+                if (existingScript) {
+                    existingScript.addEventListener('load', () => resolve(window.Calendly), { once: true });
+                    existingScript.addEventListener('error', reject, { once: true });
+                    return;
+                }
+
+                const script = document.createElement('script');
+                script.src = 'https://assets.calendly.com/assets/external/widget.js';
+                script.async = true;
+                script.dataset.calendlyWidget = 'true';
+                script.onload = () => resolve(window.Calendly);
+                script.onerror = reject;
+                document.body.appendChild(script);
+            });
+
+            return calendlyLoaderPromise;
+        }
+
+        async function openCalendlyPopup(e) {
+            if (e) e.preventDefault();
+
+            try {
+                await ensureCalendly();
+            } catch (error) {
+                window.open(calendlyUrl, '_blank', 'noopener');
+                return;
+            }
+
+            if (typeof Calendly !== 'undefined' && typeof Calendly.initPopupWidget === 'function') {
+                Calendly.initPopupWidget({ url: calendlyUrl });
+            } else {
+                window.open(calendlyUrl, '_blank', 'noopener');
+            }
+        }
+
+        if (navFreeAuditBtn) {
+            navFreeAuditBtn.addEventListener('click', openCalendlyPopup);
+        }
+
+        if (mobileFreeAuditBtn) {
+            mobileFreeAuditBtn.addEventListener('click', openCalendlyPopup);
+        }
     </script>
 </body>
 
