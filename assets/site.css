@@ -1,4 +1,4 @@
-    :root {
+﻿    :root {
       --bg: #f5f3ef;
       --bg2: #edeae4;
       --bg3: #e4e0d8;
@@ -749,11 +749,19 @@
     }
 
     .service-icon {
-      font-size: 1.6rem;
-      color: var(--blue);
+      width: 2.3rem;
+      height: 2.3rem;
       margin-bottom: 1.2rem;
-      display: block;
-      transition: color 0.4s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(42, 93, 255, 0.2);
+      border-radius: 999px;
+      color: var(--blue);
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      transition: color 0.4s, border-color 0.4s, background 0.4s;
     }
 
     .service-name {
@@ -821,15 +829,29 @@
       align-items: flex-start;
     }
 
-    .problem-list li i {
-      color: #d97706;
-      margin-top: 0.32rem;
+    .problem-list li::before,
+    .solution-list li::before,
+    .framework-list li::before {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.1rem;
+      margin-top: 0.18rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      line-height: 1;
     }
 
-    .solution-list li i,
-    .framework-list li i {
+    .problem-list li::before {
+      content: '!';
+      color: #d97706;
+    }
+
+    .solution-list li::before,
+    .framework-list li::before {
+      content: '+';
       color: #16a34a;
-      margin-top: 0.32rem;
     }
 
     #framework {
@@ -1033,7 +1055,7 @@
     }
 
     .proj-list li::before {
-      content: '→';
+      content: 'â†’';
       color: var(--accent);
       font-size: 0.75rem;
       margin-top: 3px;
@@ -1198,9 +1220,14 @@
       color: var(--white);
     }
 
-    .tool-item i {
-      color: var(--accent);
-      font-size: 0.85rem;
+    .tool-item::before {
+      content: '';
+      width: 0.45rem;
+      height: 0.45rem;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(200, 169, 110, 0.08);
+      flex: 0 0 auto;
     }
 
     #experience {
@@ -1362,10 +1389,13 @@
       border: 1px solid rgba(13, 27, 42, 0.06);
     }
 
-    .cert i {
+    .cert-mark {
       color: var(--accent);
-      font-size: 1rem;
-      width: 20px;
+      font-size: 0.72rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 600;
+      min-width: 48px;
       text-align: center;
     }
 
@@ -1571,11 +1601,14 @@
       background: rgba(200, 169, 110, 0.05);
     }
 
-    .contact-item i {
-      width: 20px;
-      text-align: center;
-      color: var(--accent);
-      font-size: 1rem;
+    .contact-item::before {
+      content: '';
+      width: 0.6rem;
+      height: 0.6rem;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(200, 169, 110, 0.08);
+      flex: 0 0 auto;
     }
 
     .contact-item-label {
@@ -1993,4 +2026,5 @@
         font-size: 0.74rem;
       }
     }
+
 
