@@ -82,9 +82,13 @@
 }
 </script>
 
-  <link
+  <link rel="preload" as="style"
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap"
-    rel="stylesheet" />
+    onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" />
+  </noscript>
 
   <link rel="stylesheet" href="/assets/site.css" />
 
@@ -865,6 +869,7 @@
     const cursor = document.getElementById('cursor');
     const cursorRing = document.getElementById('cursorRing');
     const useCustomCursor = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const isMobileViewport = window.matchMedia('(max-width: 768px)').matches;
 
     if (useCustomCursor) {
       let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
@@ -901,26 +906,36 @@
     });
 
     const revealEls = document.querySelectorAll('.reveal');
-    const revealObs = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    revealEls.forEach(el => revealObs.observe(el));
+    if (isMobileViewport) {
+      revealEls.forEach(el => el.classList.add('visible'));
+    } else {
+      const revealObs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      revealEls.forEach(el => revealObs.observe(el));
+    }
 
     const skillFills = document.querySelectorAll('.skill-fill');
-    const skillObs = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.width = entry.target.dataset.width;
-          skillObs.unobserve(entry.target);
-        }
+    if (isMobileViewport) {
+      skillFills.forEach(el => {
+        el.style.width = el.dataset.width;
       });
-    }, { threshold: 0.5 });
-    skillFills.forEach(el => skillObs.observe(el));
+    } else {
+      const skillObs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.width = entry.target.dataset.width;
+            skillObs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      skillFills.forEach(el => skillObs.observe(el));
+    }
 
     // Active nav highlight
     const sections = document.querySelectorAll('section[id]');
@@ -946,8 +961,10 @@
       });
     }
 
-    window.addEventListener('scroll', updateActiveNav);
-    window.addEventListener('load', updateActiveNav);
+    if (!isMobileViewport) {
+      window.addEventListener('scroll', updateActiveNav);
+      window.addEventListener('load', updateActiveNav);
+    }
 
     // Animated hero counters
     const statNumbers = document.querySelectorAll('.stat-num');
@@ -984,8 +1001,17 @@
       }
     }
 
-    window.addEventListener('scroll', runHeroStats);
-    window.addEventListener('load', runHeroStats);
+    if (isMobileViewport) {
+      statNumbers.forEach((el, index) => {
+        if (index === 0) el.innerHTML = '60<span class="stat-unit">%</span>';
+        if (index === 1) el.innerHTML = '20<span class="stat-unit">h</span>';
+        if (index === 2) el.innerHTML = '6<span class="stat-unit">+</span>';
+      });
+      statsAnimated = true;
+    } else {
+      window.addEventListener('scroll', runHeroStats);
+      window.addEventListener('load', runHeroStats);
+    }
 
 
 

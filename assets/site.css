@@ -1845,6 +1845,9 @@
     }
 
     @media (max-width: 768px) {
+      html {
+        scroll-behavior: auto;
+      }
 
       body {
         cursor: auto;
@@ -1980,8 +1983,9 @@
 
       #hero {
         grid-template-columns: 1fr;
-        padding-top: 7rem;
-        gap: 2rem;
+        padding-top: 6.25rem;
+        gap: 1.35rem;
+        min-height: auto;
       }
 
       .hero-right {
@@ -2005,8 +2009,27 @@
       }
 
       .hero-stats {
-        gap: 1.2rem;
-        flex-wrap: wrap;
+        gap: 0.85rem;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+      }
+
+      .hero-stats > div {
+        min-width: 0;
+      }
+
+      .hero-desc {
+        max-width: none;
+      }
+
+      .hero-btns {
+        gap: 0.75rem;
+      }
+
+      .btn-dark,
+      .btn-outline {
+        min-height: 44px;
+        padding: 0.8rem 1rem;
       }
 
       .section-title {
