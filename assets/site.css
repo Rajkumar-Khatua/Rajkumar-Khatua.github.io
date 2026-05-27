@@ -39,6 +39,20 @@
       cursor: none;
     }
 
+    #services,
+    #problems,
+    #framework,
+    #projects,
+    #skills,
+    #experience,
+    #about,
+    #testimonials,
+    #contact,
+    footer {
+      content-visibility: auto;
+      contain-intrinsic-size: 1px 900px;
+    }
+
     ::-webkit-scrollbar {
       width: 3px;
     }
@@ -1799,6 +1813,15 @@
 
     @media (max-width: 768px) {
 
+      body {
+        cursor: auto;
+      }
+
+      .cursor,
+      .cursor-ring {
+        display: none !important;
+      }
+
       .sticky-cta {
         right: 16px;
         bottom: 16px;
@@ -1930,6 +1953,18 @@
 
       .hero-right {
         display: none;
+      }
+
+      .hero-bg-shape,
+      .hero-bg-shape2,
+      .photo-bg-card,
+      .photo-border {
+        display: none;
+      }
+
+      nav,
+      nav.scrolled {
+        backdrop-filter: none;
       }
 
       .hero-line {
