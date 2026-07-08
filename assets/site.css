@@ -2051,3 +2051,52 @@
     }
 
 
+
+/* Lucide Icons Styling */
+.problem-icon {
+  width: 20px;
+  height: 20px;
+  color: #ef4444; /* red-500 */
+  margin-right: 12px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.solution-icon {
+  width: 20px;
+  height: 20px;
+  color: #22c55e; /* green-500 */
+  margin-right: 12px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.problem-list li, .solution-list li {
+  display: flex;
+  align-items: flex-start;
+}
+
+.project-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--blue);
+  margin-right: 12px;
+  vertical-align: text-bottom;
+}
+
+.project-title {
+  display: flex;
+  align-items: center;
+}
+
+.quote-icon {
+  width: 32px;
+  height: 32px;
+  color: var(--accent);
+  opacity: 0.5;
+}
+
+.t-quote {
+  font-size: 0; /* Hide the text quote if it was left over */
+  margin-bottom: 1rem;
+}
