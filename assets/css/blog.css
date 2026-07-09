@@ -3,6 +3,7 @@
             --bg2: #edeae4;
             --bg3: #e4e0d8;
             --navy: #0d1b2a;
+            --heading-color: #0d1b2a;
             --blue: #1a5cff;
             --accent: #c8a96e;
             --accent2: #e2c48a;
@@ -79,7 +80,7 @@
             font-family: 'Cormorant Garamond', serif;
             font-weight: 600;
             font-size: 1.45rem;
-            color: var(--navy);
+            color: var(--heading-color);
             letter-spacing: 1px;
         }
 
@@ -262,7 +263,7 @@
             font-size: clamp(2.8rem, 6vw, 4.8rem);
             line-height: 1.02;
             font-weight: 500;
-            color: var(--navy);
+            color: var(--heading-color);
             margin-bottom: 1rem;
             letter-spacing: -0.6px;
         }
@@ -338,7 +339,7 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 500;
-            color: var(--navy);
+            color: var(--heading-color);
             line-height: 1.08;
         }
 
@@ -446,7 +447,7 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.45rem;
             font-weight: 600;
-            color: var(--navy);
+            color: var(--heading-color);
             line-height: 1.2;
             margin-bottom: 0.8rem;
             transition: color 0.25s ease;
@@ -574,7 +575,7 @@
                 font-family: 'Cormorant Garamond', serif;
                 font-size: 1.4rem;
                 font-weight: 600;
-                color: #ffffff;
+                color: var(--heading-color);
                 text-decoration: none;
                 letter-spacing: 1px;
             }
@@ -670,3 +671,106 @@
                 text-align: center;
             }
         }
+/* Scroll to Top Button */
+.scroll-to-top {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  width: 48px;
+  height: 48px;
+  background: rgba(26, 92, 255, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--blue);
+  border: 1px solid rgba(26, 92, 255, 0.3);
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 998;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.scroll-to-top:hover {
+  transform: translateY(-5px);
+  background: var(--blue);
+  color: var(--white);
+  box-shadow: 0 8px 20px rgba(26, 92, 255, 0.4);
+  border-color: var(--blue);
+}
+
+/* Dark Mode Overrides */
+[data-theme="dark"] {
+  --bg: #0b1120;
+  --bg2: #0f172a;
+  --bg3: #1e293b;
+  --navy: #05080f;
+  --heading-color: #f8fafc;
+  --text: #f1f5f9;
+  --text2: #94a3b8;
+  --border: rgba(255, 255, 255, 0.1);
+  --white: #1e293b;
+}
+
+[data-theme="dark"] nav {
+  background: rgba(11, 17, 32, 0.92);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+[data-theme="dark"] .mobile-menu {
+  background: #0f172a;
+}
+[data-theme="dark"] .btn-outline {
+  color: var(--heading-color);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+[data-theme="dark"] .btn-outline:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--heading-color);
+}
+[data-theme="dark"] .blog-card {
+    background: var(--bg2);
+    border-color: rgba(255, 255, 255, 0.05);
+}
+[data-theme="dark"] .blog-card:hover {
+    border-color: rgba(26, 92, 255, 0.3);
+}
+[data-theme="dark"] .blog-card-media {
+    background: rgba(0,0,0,0.2);
+}
+[data-theme="dark"] .nav-cta {
+    background: var(--blue);
+    color: #fff !important;
+}
+[data-theme="dark"] .menu-toggle span {
+    background: var(--heading-color);
+}
+
+[data-theme="dark"] .nav-links a:hover,
+[data-theme="dark"] .nav-links a.active {
+    color: var(--heading-color);
+}
+[data-theme="dark"] .mobile-menu-links li a {
+    color: var(--text);
+}
+[data-theme="dark"] .mobile-menu-links li a:hover {
+    color: var(--heading-color);
+}
+
+@media (max-width: 1100px) {
+  .menu-toggle {
+    display: flex !important;
+  }
+  .nav-links {
+    display: none !important;
+  }
+}

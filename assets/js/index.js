@@ -38,10 +38,7 @@ const cursor = document.getElementById('cursor');
     });
 
     const revealEls = document.querySelectorAll('.reveal');
-    if (isMobileViewport) {
-      revealEls.forEach(el => el.classList.add('visible'));
-    } else {
-      const revealObs = new IntersectionObserver((entries) => {
+    const revealObs = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
@@ -50,15 +47,9 @@ const cursor = document.getElementById('cursor');
         });
       }, { threshold: 0.1 });
       revealEls.forEach(el => revealObs.observe(el));
-    }
 
     const skillFills = document.querySelectorAll('.skill-fill');
-    if (isMobileViewport) {
-      skillFills.forEach(el => {
-        el.style.width = el.dataset.width;
-      });
-    } else {
-      const skillObs = new IntersectionObserver((entries) => {
+    const skillObs = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.style.width = entry.target.dataset.width;
@@ -67,7 +58,6 @@ const cursor = document.getElementById('cursor');
         });
       }, { threshold: 0.5 });
       skillFills.forEach(el => skillObs.observe(el));
-    }
 
     // Active nav highlight
     const sections = document.querySelectorAll('section[id]');
@@ -93,10 +83,8 @@ const cursor = document.getElementById('cursor');
       });
     }
 
-    if (!isMobileViewport) {
-      window.addEventListener('scroll', updateActiveNav);
-      window.addEventListener('load', updateActiveNav);
-    }
+    window.addEventListener('scroll', updateActiveNav);
+    window.addEventListener('load', updateActiveNav);
 
     // Animated hero counters
     const statNumbers = document.querySelectorAll('.stat-num');
@@ -133,17 +121,8 @@ const cursor = document.getElementById('cursor');
       }
     }
 
-    if (isMobileViewport) {
-      statNumbers.forEach((el, index) => {
-        if (index === 0) el.innerHTML = '60<span class="stat-unit">%</span>';
-        if (index === 1) el.innerHTML = '20<span class="stat-unit">h</span>';
-        if (index === 2) el.innerHTML = '6<span class="stat-unit">+</span>';
-      });
-      statsAnimated = true;
-    } else {
-      window.addEventListener('scroll', runHeroStats);
-      window.addEventListener('load', runHeroStats);
-    }
+    window.addEventListener('scroll', runHeroStats);
+    window.addEventListener('load', runHeroStats);
 
 
 
@@ -375,3 +354,125 @@ const freeAuditBtn = document.getElementById('freeAuditBtn');
     if (navFreeAuditBtn) {
       navFreeAuditBtn.addEventListener('click', openCalendlyPopup);
     }
+
+// Theme Toggle Logic
+const themeBtn = document.getElementById('themeToggle');
+const themeBtnMobile = document.getElementById('themeToggleMobile');
+const htmlEl = document.documentElement;
+const themeIcon = themeBtn.querySelector('i');
+
+// Check saved theme
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'dark') {
+    htmlEl.setAttribute('data-theme', 'dark');
+    themeBtn.innerHTML = '<i data-lucide="sun"></i>';
+    if (themeBtnMobile) themeBtnMobile.innerHTML = '<i data-lucide="sun"></i>';
+}
+
+themeBtn.addEventListener('click', toggleThemeFunc);
+if (themeBtnMobile) themeBtnMobile.addEventListener('click', toggleThemeFunc);
+
+function toggleThemeFunc() {
+    const currentTheme = htmlEl.getAttribute('data-theme');
+    if (currentTheme === 'dark') {
+        htmlEl.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'light');
+        // We'd update lucide icon here but lucide requires re-creating
+        themeBtn.innerHTML = '<i data-lucide="moon"></i>';
+        if (themeBtnMobile) themeBtnMobile.innerHTML = '<i data-lucide="moon"></i>';
+    } else {
+        htmlEl.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+        themeBtn.innerHTML = '<i data-lucide="sun"></i>';
+        if (themeBtnMobile) themeBtnMobile.innerHTML = '<i data-lucide="sun"></i>';
+    }
+    lucide.createIcons();
+}
+
+// Modal Logic
+const modal = document.getElementById('demoModal');
+const closeBtn = document.getElementById('closeModal');
+const demoBtns = document.querySelectorAll('.open-demo-btn');
+
+demoBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        modal.classList.add('active');
+    });
+});
+
+closeBtn.addEventListener('click', () => {
+    modal.classList.remove('active');
+});
+
+modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        modal.classList.remove('active');
+    }
+});
+
+
+// tsParticles Initialization
+document.addEventListener("DOMContentLoaded", function () {
+    if (document.getElementById("tsparticles") && window.tsParticles) {
+        tsParticles.load("tsparticles", {
+          fpsLimit: 60,
+          interactivity: {
+            events: {
+              onHover: {
+                enable: true,
+                mode: "grab",
+              },
+            },
+            modes: {
+              grab: {
+                distance: 200,
+                links: {
+                  opacity: 0.5,
+                },
+              },
+            },
+          },
+          particles: {
+            color: {
+              value: ["#1a5cff", "#c8a96e"], // Blue and Gold
+            },
+            links: {
+              color: "#8a8a9a", // Grey
+              distance: 150,
+              enable: true,
+              opacity: 0.3,
+              width: 1,
+            },
+            move: {
+              enable: true,
+              speed: 1,
+              direction: "none",
+              random: false,
+              straight: false,
+              outModes: {
+                default: "bounce",
+              },
+            },
+            number: {
+              density: {
+                enable: true,
+                area: 800,
+              },
+              value: 60,
+            },
+            opacity: {
+              value: 0.4,
+            },
+            shape: {
+              type: "circle",
+            },
+            size: {
+              value: { min: 1, max: 3 },
+            },
+          },
+          detectRetina: true,
+        });
+    }
+});
+

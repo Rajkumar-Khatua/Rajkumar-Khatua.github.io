@@ -4,7 +4,27 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Case Studies | Rajkumar Khatua</title>
+        <title>Case Studies | Rajkumar Khatua</title>
+    <meta name="description" content="Read real-world case studies on Business Intelligence consulting, data analytics services, and automated reporting solutions. Explore BI dashboards and Zoho Analytics implementations by Rajkumar Khatua." />
+    <meta name="keywords" content="Business Intelligence consulting case studies, Data Analytics services portfolio, Automated reporting solutions examples, Freelance BI consultant projects, outsourced BI case studies, KPI dashboard examples, Zoho Analytics case studies, BI dashboard portfolio, Zoho CRM integration examples, Rajkumar Khatua case studies, Zoho Consultant USA, BI dashboard developer UK, Business Intelligence expert Europe, Zoho Analytics Middle East, Data Analytics consultant UAE, Outsourced BI Latin America, Remote Zoho expert North America, Data analytics agency alternative" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Rajkumar Khatua" />
+    <meta name="theme-color" content="#0d1b2a" />
+    <link rel="canonical" href="https://rajkumarkhatua.me/blog.html" />
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Rajkumar Khatua" />
+    <meta property="og:title" content="Case Studies | Rajkumar Khatua" />
+    <meta property="og:description" content="Read real-world case studies on Business Intelligence consulting, data analytics services, and automated reporting solutions. Explore BI dashboards and Zoho Analytics implementations by Rajkumar Khatua." />
+    <meta property="og:url" content="https://rajkumarkhatua.me/blog.html" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Case Studies | Rajkumar Khatua" />
+    <meta name="twitter:description" content="Read real-world case studies and implementations of Zoho Analytics, BI dashboards, and data systems." />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,6 +35,8 @@
         rel="stylesheet" />
 
     <link rel="stylesheet" href="/assets/css/blog.css" />
+
+    <script>const savedTheme = localStorage.getItem('theme') || 'light'; document.documentElement.setAttribute('data-theme', savedTheme);</script>
 </head>
 
 <body>
@@ -30,6 +52,7 @@
                 <li><a href="index.html#about">About</a></li>
                 <li><a href="blog.html" class="active">Case Studies</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
+                <li><button id="themeToggle" class="theme-btn" aria-label="Toggle Dark Mode" style="background:none; border:none; cursor:pointer; color:var(--heading-color); padding:0 10px; display:flex; align-items:center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button></li>
                 <li><a href="#" class="nav-cta" id="navFreeAuditBtn">Free Audit</a></li>
             </ul>
 
@@ -46,9 +69,12 @@
     <div class="mobile-menu" id="navLinks">
         <div class="mobile-menu-header">
             <a href="index.html" class="mobile-menu-logo">RK<span>.</span></a>
-            <button class="nav-close-btn" id="navCloseBtn" aria-label="Close menu">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
+            <div style="display: flex; gap: 12px; align-items: center;">
+                <button id="themeToggleMobile" class="theme-btn" aria-label="Toggle Dark Mode" style="display:flex; align-items:center; justify-content:center; width:38px; height:38px; background:var(--bg2); border:1px solid var(--border); border-radius:8px; cursor:pointer; color:var(--heading-color);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button>
+                <button class="nav-close-btn" id="navCloseBtn" aria-label="Close menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                </button>
+            </div>
         </div>
 
         <ul class="mobile-menu-links">
@@ -111,6 +137,25 @@
     <script src="/assets/js/blog.js"></script>
 
     
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+    </button>
+    <script src="/assets/js/scroll_top.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggle = document.getElementById('themeToggle');
+            const themeToggleMobile = document.getElementById('themeToggleMobile');
+            function toggleTheme() {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            }
+            if(themeToggle) themeToggle.addEventListener('click', toggleTheme);
+            if(themeToggleMobile) themeToggleMobile.addEventListener('click', toggleTheme);
+        });
+    </script>
 </body>
 
 </html>

@@ -4,14 +4,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rajkumar Khatua — BI & Zoho Analytics Specialist</title>
+  <title>Rajkumar Khatua | BI & Zoho Analytics Specialist</title>
   <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
   <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-512.png">
   <!-- Primary SEO -->
   <meta name="description"
-    content="Rajkumar Khatua is a Zoho Analytics Specialist & Zoho BI Consultant helping businesses make smarter decisions through Zoho Analytics dashboards, Zoho CRM, Zoho Books, Zoho Inventory & Zoho Creator integrations. Available for freelance & remote work globally." />
+    content="Rajkumar Khatua is a Business Intelligence Consultant & Zoho Analytics Specialist providing data analytics services, automated reporting solutions, and executive dashboards. Available for freelance & remote consulting globally." />
   <meta name="keywords"
-    content="Zoho Analytics specialist, Zoho BI consultant, Zoho ecosystem expert, Zoho CRM consultant, Zoho Creator developer, Zoho DataPrep specialist, Zoho dashboard designer, business intelligence consultant, BI dashboard design, executive dashboard Zoho, manufacturing analytics, Zoho Analytics freelancer India, remote Zoho consultant, Zoho Books analytics, Kolkata BI consultant, Zoho integration specialist, SQL data modeling, financial analytics Zoho" />
+    content="Business Intelligence consulting, Data Analytics services, Automated reporting solutions, Freelance BI consultant, Outsourced business intelligence, Hire dashboard developer, KPI tracking software, Small business data analytics consultant, Zoho Analytics specialist, Zoho BI consultant, Zoho ecosystem expert, Zoho dashboard designer, remote Zoho consultant, Zoho Books analytics, SQL data modeling, Zoho Consultant USA, BI dashboard developer UK, Business Intelligence expert Europe, Zoho Analytics Middle East, Data Analytics consultant UAE, Outsourced BI Latin America, Remote Zoho expert North America, Data analytics agency alternative" />
   <meta name="robots" content="index, follow" />
   <meta name="author" content="Rajkumar Khatua" />
   <meta name="theme-color" content="#0d1b2a" />
@@ -21,9 +21,9 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Rajkumar Khatua" />
-  <meta property="og:title" content="Rajkumar Khatua — Zoho Analytics Specialist & BI Consultant" />
+  <meta property="og:title" content="Rajkumar Khatua | Zoho Analytics Specialist & BI Consultant" />
   <meta property="og:description"
-    content="I turn your Zoho data into decisions. Specialising in Zoho Analytics dashboards, Zoho CRM, Books & Inventory integrations, and executive BI strategy. Available globally for freelance & remote work." />
+    content="I turn your data into decisions. Specializing in Business Intelligence consulting, automated reporting solutions, and Zoho Analytics dashboards. Available for freelance & remote work globally." />
   <meta property="og:image" content="https://rajkumarkhatua.me/assets/profile_image.jpg" />
   <meta property="og:image:width" content="800" />
   <meta property="og:image:height" content="800" />
@@ -32,9 +32,9 @@
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Rajkumar Khatua — Zoho Analytics Specialist & BI Consultant" />
+  <meta name="twitter:title" content="Rajkumar Khatua | Zoho Analytics Specialist & BI Consultant" />
   <meta name="twitter:description"
-    content="I turn your Zoho data into decisions. Zoho Analytics dashboards, Zoho CRM/Books/Inventory integrations & executive BI strategy." />
+    content="I turn your data into decisions. Business Intelligence consulting, automated reporting solutions, and Zoho Analytics dashboards." />
   <meta name="twitter:image" content="https://rajkumarkhatua.me/assets/profile_image.jpg" />
 
   <!-- Performance -->
@@ -51,6 +51,7 @@
   "jobTitle": "Zoho Analytics Specialist & BI Consultant",
   "description": "Zoho Analytics Specialist and BI Consultant helping businesses make smarter decisions through Zoho-powered executive dashboards, Zoho CRM, Books, Inventory and Creator integrations.",
   "url": "https://rajkumarkhatua.me",
+  "areaServed": "Worldwide",
   "image": "https://rajkumarkhatua.me/assets/profile_image.jpg",
   "email": "work.rajkumarkhatua@gmail.com",
   "address": {
@@ -99,6 +100,7 @@
   <div class="cursor-ring" id="cursorRing"></div>
 
   <nav id="navbar">
+    <div class="nav-inner">
     <a href="#hero" class="nav-logo">RK<span>.</span></a>
 
     <ul class="nav-links">
@@ -109,6 +111,7 @@
       <li><a href="blog.html">Case Studies</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li><button id="themeToggle" class="theme-btn" aria-label="Toggle Dark Mode"><i data-lucide="moon"></i></button></li>
       <li><a href="#" class="nav-cta" id="navFreeAuditBtn">Free Audit</a></li>
     </ul>
 
@@ -117,14 +120,18 @@
       <span></span>
       <span></span>
     </button>
-  </nav>
+      </div>
+</nav>
 
   <div class="nav-backdrop" id="navBackdrop"></div>
 
   <div class="mobile-menu" id="navLinks">
     <div class="mobile-menu-header">
       <a href="#hero" class="mobile-menu-logo">RK<span>.</span></a>
-      <button class="nav-close-btn" id="navCloseBtn" aria-label="Close menu">&times;</button>
+      <div style="display: flex; gap: 12px; align-items: center;">
+        <button id="themeToggleMobile" class="theme-btn" aria-label="Toggle Dark Mode" style="display:flex; align-items:center; justify-content:center; width:38px; height:38px; background:var(--bg2); border:1px solid var(--border); border-radius:8px; cursor:pointer; color:var(--text);"><i data-lucide="moon"></i></button>
+        <button class="nav-close-btn" id="navCloseBtn" aria-label="Close menu">&times;</button>
+      </div>
     </div>
 
     <ul class="mobile-menu-links">
@@ -141,6 +148,8 @@
   </div>
 
   <section id="hero">
+    <canvas id="dataNetworkCanvas"></canvas>
+    
     <div class="hero-bg-shape"></div>
     <div class="hero-bg-shape2"></div>
     <div class="hero-line"></div>
@@ -353,7 +362,7 @@
           </ul>
         </div>
         <div class="project-foot">
-          <a href="https://analytics.zoho.in/open-view/526646000000006392" class="demo-btn" target="_blank"
+          <a href="#!" data-original="https://analytics.zoho.in/open-view/526646000000006392" class="demo-btn open-demo-btn" target="_blank"
             rel="noopener noreferrer">Explore Live Dashboard</a>
         </div>
       </div>
@@ -381,7 +390,7 @@
           </ul>
         </div>
         <div class="project-foot">
-          <a href="https://analytics.zoho.in/open-view/526646000000008541" class="demo-btn" target="_blank"
+          <a href="#!" data-original="https://analytics.zoho.in/open-view/526646000000008541" class="demo-btn open-demo-btn" target="_blank"
             rel="noopener noreferrer">Explore Live Dashboard</a>
         </div>
       </div>
@@ -408,7 +417,7 @@
           </ul>
         </div>
         <div class="project-foot">
-          <a href="https://analytics.zoho.in/open-view/526646000000009495" class="demo-btn" target="_blank"
+          <a href="#!" data-original="https://analytics.zoho.in/open-view/526646000000009495" class="demo-btn open-demo-btn" target="_blank"
             rel="noopener noreferrer">Explore Live Dashboard</a>
         </div>
       </div>
@@ -434,7 +443,7 @@
           </ul>
         </div>
         <div class="project-foot">
-          <a href="#contact" class="demo-btn">Discuss Your Use Case</a>
+          <a href="#contact" class="demo-btn open-demo-btn">Discuss Your Use Case</a>
         </div>
       </div>
 
@@ -458,7 +467,7 @@
           </ul>
         </div>
         <div class="project-foot">
-          <a href="#contact" class="demo-btn">Discuss Your Use Case</a>
+          <a href="#contact" class="demo-btn open-demo-btn">Discuss Your Use Case</a>
         </div>
       </div>
 
@@ -483,7 +492,7 @@
           </ul>
         </div>
         <div class="project-foot">
-          <a href="#contact" class="demo-btn">Discuss Your Use Case</a>
+          <a href="#contact" class="demo-btn open-demo-btn">Discuss Your Use Case</a>
         </div>
 
       </div>
@@ -512,7 +521,7 @@
           </ul>
         </div>
         <div class="project-foot">
-          <a href="https://analytics.zoho.in/open-view/526646000000018894" class="demo-btn" target="_blank"
+          <a href="#!" data-original="https://analytics.zoho.in/open-view/526646000000018894" class="demo-btn open-demo-btn" target="_blank"
             rel="noopener noreferrer">Explore Live Dashboard</a>
         </div>
       </div>
@@ -866,9 +875,31 @@
 
   <script src="/assets/js/index.js"></script>
   
+
+  <!-- Live Demo Modal -->
+  <div class="modal-overlay" id="demoModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 style="font-size: 1.1rem; color: var(--navy);">Interactive Dashboard Demo</h3>
+        <button class="modal-close" id="closeModal"><i data-lucide="x"></i></button>
+      </div>
+      <div class="modal-body">
+        <div style="text-align: center;">
+          <i data-lucide="loader-2" class="lucide-spin" style="margin-bottom: 1rem;"></i>
+          <p>Connecting to secure Zoho Analytics workspace...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <script>
   lucide.createIcons();
 </script>
+  <script src="/assets/js/network.js"></script>
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+    </button>
+    <script src="/assets/js/scroll_top.js"></script>
 </body>
 
 </html>
