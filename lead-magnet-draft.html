@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The 5-Point Zoho Analytics Audit Checklist</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        
+        :root {
+            --navy: #0d1b2a;
+            --gold: #c8a96e;
+            --light-bg: #f8fafc;
+            --text: #1e293b;
+            --gray: #64748b;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background-color: white;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .page {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        /* Header Section */
+        .header {
+            background-color: var(--navy);
+            color: white;
+            padding: 60px 40px;
+            border-radius: 16px;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 50% 0%, rgba(200, 169, 110, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .brand {
+            font-weight: 700;
+            font-size: 24px;
+            color: var(--gold);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .title {
+            font-size: 36px;
+            font-weight: 700;
+            margin: 0 0 15px 0;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #cbd5e1;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Content Section */
+        .intro {
+            font-size: 18px;
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: var(--light-bg);
+            border-left: 4px solid var(--gold);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .checklist-item {
+            display: flex;
+            margin-bottom: 35px;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .check-box {
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            border: 2px solid var(--gold);
+            border-radius: 6px;
+            margin-right: 20px;
+            margin-top: 5px;
+        }
+
+        .item-content h3 {
+            margin: 0 0 10px 0;
+            font-size: 20px;
+            color: var(--navy);
+        }
+
+        .item-content p {
+            margin: 0 0 10px 0;
+            font-size: 15px;
+        }
+
+        .why-it-matters {
+            display: inline-block;
+            background: var(--light-bg);
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-size: 14px;
+            color: var(--gray);
+            margin-top: 5px;
+        }
+
+        .why-it-matters strong {
+            color: var(--navy);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background-color: var(--navy);
+            color: white;
+            padding: 50px 40px;
+            border-radius: 16px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .cta-section h2 {
+            font-size: 28px;
+            margin: 0 0 15px 0;
+            color: var(--gold);
+        }
+
+        .cta-section p {
+            font-size: 16px;
+            margin: 0 0 30px 0;
+            color: #cbd5e1;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--navy);
+            text-decoration: none;
+            font-weight: 700;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        @media print {
+            body { background: white; }
+            .page { padding: 0; max-width: 100%; }
+            .checklist-item { box-shadow: none; break-inside: avoid; }
+            .header { border-radius: 0; }
+            .cta-section { border-radius: 0; break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="header">
+            <div class="brand">RAJKUMAR KHATUA</div>
+            <h1 class="title">The 5-Point Zoho Analytics Audit</h1>
+            <p class="subtitle">Is your data actually reliable? Use this checklist to uncover hidden reporting bottlenecks in your business.</p>
+        </div>
+
+        <div class="intro">
+            Most businesses connect Zoho Analytics but never configure the data architecture properly. This leads to broken syncs, duplicated revenue numbers, and expensive dashboards that nobody looks at. Check your system against these 5 pillars.
+        </div>
+
+        <div class="checklist-item">
+            <div class="check-box"></div>
+            <div class="item-content">
+                <h3>1. The Integration Sync Check</h3>
+                <p>Are all your core Zoho apps (CRM, Books, Projects, Desk) successfully syncing into Analytics without daily failure logs?</p>
+                <div class="why-it-matters"><strong>Why it matters:</strong> If your sync is broken or failing, your executives are making decisions based on outdated, inaccurate numbers.</div>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <div class="check-box"></div>
+            <div class="item-content">
+                <h3>2. The Data Duplication Test</h3>
+                <p>When you pull a "Total Revenue" or "Lead Count" report in Analytics, does the number match the exact figure in Zoho CRM or Books?</p>
+                <div class="why-it-matters"><strong>Why it matters:</strong> Poor data modeling will inflate your revenue numbers. If leadership doesn't trust the numbers on the screen, the dashboard is useless.</div>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <div class="check-box"></div>
+            <div class="item-content">
+                <h3>3. The "Spreadsheet Dependency" Check</h3>
+                <p>Are your team members still exporting data from Zoho into Excel or Google Sheets to manipulate it before meetings?</p>
+                <div class="why-it-matters"><strong>Why it matters:</strong> The whole point of Zoho Analytics is automation. If your team is still doing manual VLOOKUPs, your architecture is fundamentally broken and costing you hours of productivity.</div>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <div class="check-box"></div>
+            <div class="item-content">
+                <h3>4. The KPI & Decision Rule Alignment</h3>
+                <p>Does your executive dashboard actually answer the 3 most important strategic questions your CEO or Board cares about?</p>
+                <div class="why-it-matters"><strong>Why it matters:</strong> Most dashboards suffer from "vanity metrics." A good BI system should immediately highlight bottlenecks, margins, and ROI, not just pretty charts.</div>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <div class="check-box"></div>
+            <div class="item-content">
+                <h3>5. The Team Adoption Rate</h3>
+                <p>How many times per week do your executives and managers actually log into the dashboards to check performance?</p>
+                <div class="why-it-matters"><strong>Why it matters:</strong> A dashboard nobody looks at has a zero ROI. High adoption requires clean UI, fast load times, and highly relevant insights.</div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>Did you leave any boxes unchecked?</h2>
+            <p>If you couldn't check all 5 boxes, your business is operating on blind spots. Don't spend another month guessing your margins or waiting on manual spreadsheet reports.</p>
+            <a href="mailto:work.rajkumarkhatua@gmail.com" class="cta-button">Email Me For a Free System Review</a>
+        </div>
+
+        <div class="footer">
+            &copy; 2024 Rajkumar Khatua | Certified Zoho Analytics Consultant
+        </div>
+    </div>
+</body>
+</html>

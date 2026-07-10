@@ -101,6 +101,7 @@
     section {
       padding: 7rem 6%;
       position: relative;
+      scroll-margin-top: 80px;
     }
 
     #projects,
