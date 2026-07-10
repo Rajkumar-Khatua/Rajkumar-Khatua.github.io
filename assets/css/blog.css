@@ -203,7 +203,7 @@
 
         .blog-hero {
             position: relative;
-            padding: 7rem 0 3rem;
+            padding: 12rem 0 3rem;
             overflow: hidden;
         }
 
@@ -652,7 +652,7 @@
             }
 
             .blog-hero {
-                padding: 5.5rem 0 2rem;
+                padding: 10.5rem 0 2rem;
             }
 
             .hero-actions {
