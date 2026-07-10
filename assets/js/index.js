@@ -221,6 +221,67 @@ demoBtns.forEach(btn => {
     });
 });
 
+// Formspree Lead Magnet form
+const magnetForm = document.getElementById('magnetForm');
+const magnetSuccess = document.getElementById('magnetSuccess');
+const magnetSubmitBtn = document.getElementById('magnetSubmitBtn');
+
+if (magnetForm) {
+  magnetForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const email = magnetForm.email.value.trim();
+    const subject = magnetForm._subject.value;
+
+    if (!email) {
+      alert('Please enter your email.');
+      return;
+    }
+
+    magnetSubmitBtn.textContent = 'Sending...';
+    magnetSubmitBtn.disabled = true;
+
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          email,
+          _subject: subject
+        })
+      });
+
+      if (response.ok) {
+        magnetForm.reset();
+        magnetForm.style.display = 'none';
+        magnetSuccess.style.display = 'block';
+        
+        // Re-initialize Lucide icons for the new success icon
+        if (typeof lucide !== 'undefined') {
+          lucide.createIcons();
+        }
+      } else {
+        alert('Oops! There was a problem submitting your request.');
+        magnetSubmitBtn.innerHTML = 'Send me the Checklist <i data-lucide="arrow-right" class="btn-icon"></i>';
+        if (typeof lucide !== 'undefined') {
+          lucide.createIcons();
+        }
+        magnetSubmitBtn.disabled = false;
+      }
+    } catch (error) {
+      alert('Oops! There was a problem submitting your request.');
+      magnetSubmitBtn.innerHTML = 'Send me the Checklist <i data-lucide="arrow-right" class="btn-icon"></i>';
+      if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+      }
+      magnetSubmitBtn.disabled = false;
+    }
+  });
+}
+
 closeBtn.addEventListener('click', () => {
     modal.classList.remove('active');
 });
