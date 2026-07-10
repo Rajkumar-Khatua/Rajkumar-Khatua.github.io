@@ -32,10 +32,8 @@ const cursor = document.getElementById('cursor');
       document.body.style.cursor = 'auto';
     }
 
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 60);
-    });
+    // Navbar scroll moved to navbar.js
+
 
     const revealEls = document.querySelectorAll('.reveal');
     const revealObs = new IntersectionObserver((entries) => {
@@ -201,193 +199,15 @@ const cursor = document.getElementById('cursor');
       });
     }
 
-    // Mobile menu
-    const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
-    const navBackdrop = document.getElementById('navBackdrop');
-    const navCloseBtn = document.getElementById('navCloseBtn');
+    // Mobile menu moved to navbar.js
 
-    function closeMenu() {
-      menuToggle.classList.remove('open');
-      navLinks.classList.remove('open');
-      navBackdrop.classList.remove('open');
-      document.body.style.overflow = '';
-    }
 
-    function openMenu() {
-      menuToggle.classList.add('open');
-      navLinks.classList.add('open');
-      navBackdrop.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
+    
 
-    menuToggle.addEventListener('click', () => {
-      navLinks.classList.contains('open') ? closeMenu() : openMenu();
-    });
+// Calendly logic moved to navbar.js
 
-    navBackdrop.addEventListener('click', closeMenu);
+// Theme toggle moved to navbar.js
 
-    if (navCloseBtn) {
-      navCloseBtn.addEventListener('click', closeMenu);
-    }
-
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', closeMenu);
-    });
-
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 768) {
-        closeMenu();
-      }
-    });
-
-const freeAuditBtn = document.getElementById('freeAuditBtn');
-    const navFreeAuditBtn = document.getElementById('navFreeAuditBtn');
-    const calendlyUrl = 'https://calendly.com/work-rajkumarkhatua/30min';
-    let calendlyLoaderPromise;
-
-    function ensureCalendly() {
-      if (typeof Calendly !== 'undefined' && typeof Calendly.initPopupWidget === 'function') {
-        return Promise.resolve(Calendly);
-      }
-
-      if (calendlyLoaderPromise) {
-        return calendlyLoaderPromise;
-      }
-
-      calendlyLoaderPromise = new Promise((resolve, reject) => {
-        if (!document.querySelector('link[data-calendly-widget]')) {
-          const link = document.createElement('link');
-          link.rel = 'stylesheet';
-          link.href = 'https://assets.calendly.com/assets/external/widget.css';
-          link.dataset.calendlyWidget = 'true';
-          document.head.appendChild(link);
-        }
-
-        const existingScript = document.querySelector('script[data-calendly-widget]');
-        if (existingScript) {
-          existingScript.addEventListener('load', () => resolve(window.Calendly), { once: true });
-          existingScript.addEventListener('error', reject, { once: true });
-          return;
-        }
-
-        const script = document.createElement('script');
-        script.src = 'https://assets.calendly.com/assets/external/widget.js';
-        script.async = true;
-        script.dataset.calendlyWidget = 'true';
-        script.onload = () => resolve(window.Calendly);
-        script.onerror = reject;
-        document.body.appendChild(script);
-      });
-
-      return calendlyLoaderPromise;
-    }
-
-    function toggleFreeAuditBtn() {
-      if (!freeAuditBtn) return;
-      if (freeAuditBtn.classList.contains('hidden-during-calendly')) return;
-
-      if (window.scrollY > 400) {
-        freeAuditBtn.style.opacity = '1';
-        freeAuditBtn.style.pointerEvents = 'auto';
-      } else {
-        freeAuditBtn.style.opacity = '0';
-        freeAuditBtn.style.pointerEvents = 'none';
-      }
-    }
-
-    function hideFreeAuditBtn() {
-      if (!freeAuditBtn) return;
-      freeAuditBtn.classList.add('hidden-during-calendly');
-      freeAuditBtn.style.opacity = '0';
-      freeAuditBtn.style.pointerEvents = 'none';
-    }
-
-    function showFreeAuditBtn() {
-      if (!freeAuditBtn) return;
-      freeAuditBtn.classList.remove('hidden-during-calendly');
-      toggleFreeAuditBtn();
-    }
-
-    function watchCalendlyClose() {
-      const closeWatcher = setInterval(() => {
-        const calendlyPopup =
-          document.querySelector('.calendly-overlay') ||
-          document.querySelector('.calendly-popup') ||
-          document.querySelector('.calendly-popup-content');
-
-        if (!calendlyPopup) {
-          clearInterval(closeWatcher);
-          showFreeAuditBtn();
-        }
-      }, 500);
-    }
-
-    async function openCalendlyPopup(e) {
-      if (e) e.preventDefault();
-      hideFreeAuditBtn();
-
-      try {
-        await ensureCalendly();
-      } catch (error) {
-        showFreeAuditBtn();
-        window.open(calendlyUrl, '_blank', 'noopener');
-        return;
-      }
-
-      if (typeof Calendly !== 'undefined' && typeof Calendly.initPopupWidget === 'function') {
-        Calendly.initPopupWidget({ url: calendlyUrl });
-        setTimeout(watchCalendlyClose, 800);
-      } else {
-        showFreeAuditBtn();
-        window.open(calendlyUrl, '_blank', 'noopener');
-      }
-    }
-
-    window.addEventListener('scroll', toggleFreeAuditBtn);
-    window.addEventListener('load', toggleFreeAuditBtn);
-
-    if (freeAuditBtn) {
-      freeAuditBtn.addEventListener('click', openCalendlyPopup);
-    }
-
-    if (navFreeAuditBtn) {
-      navFreeAuditBtn.addEventListener('click', openCalendlyPopup);
-    }
-
-// Theme Toggle Logic
-const themeBtn = document.getElementById('themeToggle');
-const themeBtnMobile = document.getElementById('themeToggleMobile');
-const htmlEl = document.documentElement;
-const themeIcon = themeBtn.querySelector('i');
-
-// Check saved theme
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme === 'dark') {
-    htmlEl.setAttribute('data-theme', 'dark');
-    themeBtn.innerHTML = '<i data-lucide="sun"></i>';
-    if (themeBtnMobile) themeBtnMobile.innerHTML = '<i data-lucide="sun"></i>';
-}
-
-themeBtn.addEventListener('click', toggleThemeFunc);
-if (themeBtnMobile) themeBtnMobile.addEventListener('click', toggleThemeFunc);
-
-function toggleThemeFunc() {
-    const currentTheme = htmlEl.getAttribute('data-theme');
-    if (currentTheme === 'dark') {
-        htmlEl.removeAttribute('data-theme');
-        localStorage.setItem('theme', 'light');
-        // We'd update lucide icon here but lucide requires re-creating
-        themeBtn.innerHTML = '<i data-lucide="moon"></i>';
-        if (themeBtnMobile) themeBtnMobile.innerHTML = '<i data-lucide="moon"></i>';
-    } else {
-        htmlEl.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-        themeBtn.innerHTML = '<i data-lucide="sun"></i>';
-        if (themeBtnMobile) themeBtnMobile.innerHTML = '<i data-lucide="sun"></i>';
-    }
-    lucide.createIcons();
-}
 
 // Modal Logic
 const modal = document.getElementById('demoModal');
