@@ -18,6 +18,23 @@
             --reading-width: 820px;
         }
 
+        /* Dark Mode Overrides */
+        [data-theme="dark"] {
+          --bg: #0b1120;
+          --bg2: #0f172a;
+          --bg3: #1e293b;
+          --navy: #05080f;
+          --text: #f1f5f9;
+          --text2: #94a3b8;
+          --border: rgba(255, 255, 255, 0.1);
+          --white: #1e293b;
+        }
+
+        [data-theme="dark"] .btn-dark {
+            background: var(--blue);
+            color: #ffffff;
+        }
+
         *,
         *::before,
         *::after {
@@ -287,6 +304,11 @@
         .article-footer-link:hover {
             color: var(--blue);
             gap: 0.7rem;
+        }
+
+        .btn-dark {
+            background: var(--navy);
+            color: #ffffff;
         }
 
         footer {
