@@ -88,6 +88,154 @@
             pointer-events: none;
         }
 
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-graphic {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            perspective: 1000px;
+            z-index: 2;
+        }
+
+        .glass-panel {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            color: var(--heading-color);
+            transition: transform 0.3s ease;
+        }
+
+        [data-theme="dark"] .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .main-panel {
+            width: 320px;
+            height: 240px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotateY(-15deg) rotateX(10deg);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-panel:hover {
+            transform: translate(-50%, -50%) rotateY(-5deg) rotateX(5deg);
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            color: var(--text2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 0.75rem;
+        }
+
+        .panel-header i {
+            color: var(--accent);
+            width: 18px;
+            height: 18px;
+        }
+
+        .chart-bars {
+            display: flex;
+            align-items: flex-end;
+            gap: 12px;
+            flex: 1;
+            padding-bottom: 1rem;
+        }
+
+        .bar {
+            flex: 1;
+            background: var(--blue);
+            border-radius: 4px 4px 0 0;
+            animation: barRise 2s ease-out forwards;
+            opacity: 0;
+            transform-origin: bottom;
+            transform: scaleY(0);
+        }
+        
+        .bar.b1 { height: 40%; animation-delay: 0.2s; }
+        .bar.b2 { height: 60%; animation-delay: 0.4s; }
+        .bar.b3 { height: 35%; animation-delay: 0.6s; background: var(--accent); }
+        .bar.b4 { height: 80%; animation-delay: 0.8s; }
+        .bar.b5 { height: 100%; animation-delay: 1.0s; background: var(--accent); }
+
+        @keyframes barRise {
+            0% { transform: scaleY(0); opacity: 0; }
+            100% { transform: scaleY(1); opacity: 1; }
+        }
+
+        .float-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.25rem;
+            border-radius: 12px;
+            animation: floating 4s ease-in-out infinite;
+        }
+
+        .fc-1 {
+            top: 20%;
+            right: 0;
+            animation-delay: 0s;
+        }
+
+        .fc-2 {
+            bottom: 25%;
+            left: 0;
+            animation-delay: 2s;
+        }
+
+        .fc-icon-wrap {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(200, 169, 110, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+        }
+
+        .fc-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .fc-val {
+            font-size: 1.1rem;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .fc-lbl {
+            font-size: 0.75rem;
+            color: var(--text2);
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
         .hero-wrap {
             position: relative;
             z-index: 1;
@@ -386,6 +534,21 @@
             .section-head {
                 flex-direction: column;
                 align-items: flex-start;
+            }
+        }
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .hero-graphic {
+                height: 320px;
+            }
+            .blog-hero {
+                padding: 12rem 0 4rem;
+            }
+            .hero-title {
+                font-size: 3rem;
             }
         }
         @media (max-width: 768px) {
