@@ -112,6 +112,14 @@
       background: transparent;
     }
 
+    .nav-inner {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+
     nav.scrolled {
       background: rgba(245, 243, 239, 0.92);
       backdrop-filter: blur(20px);
