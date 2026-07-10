@@ -51,8 +51,24 @@ document.addEventListener("DOMContentLoaded", () => {
         
         // Scroll Logic
         if (navbar) {
+            let lastScrollY = window.scrollY;
+            
             window.addEventListener('scroll', () => {
-                navbar.classList.toggle('scrolled', window.scrollY > 60);
+                const currentScrollY = window.scrollY;
+                
+                // Toggle scrolled state (background blur)
+                navbar.classList.toggle('scrolled', currentScrollY > 60);
+                
+                // Hide/show logic based on scroll direction
+                if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                    // Scrolling down & past header -> hide
+                    navbar.classList.add('nav-hidden');
+                } else {
+                    // Scrolling up -> show
+                    navbar.classList.remove('nav-hidden');
+                }
+                
+                lastScrollY = currentScrollY;
             });
             // trigger once on load
             navbar.classList.toggle('scrolled', window.scrollY > 60);
