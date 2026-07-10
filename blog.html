@@ -95,21 +95,6 @@
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
     </button>
     <script src="/assets/js/scroll_top.js"></script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const themeToggle = document.getElementById('themeToggle');
-            const themeToggleMobile = document.getElementById('themeToggleMobile');
-            function toggleTheme() {
-                const currentTheme = document.documentElement.getAttribute('data-theme');
-                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-                document.documentElement.setAttribute('data-theme', newTheme);
-                localStorage.setItem('theme', newTheme);
-            }
-            if(themeToggle) themeToggle.addEventListener('click', toggleTheme);
-            if(themeToggleMobile) themeToggleMobile.addEventListener('click', toggleTheme);
-        });
-    </script>
 </body>
 
 </html>
