@@ -70,7 +70,7 @@
 
         .article-shell {
             position: relative;
-            padding: 4rem 0 6rem;
+            padding: 8rem 0 6rem; /* Increased top padding to clear fixed navbar */
             overflow: hidden;
         }
 
@@ -349,7 +349,7 @@
 
         @media (max-width: 768px) {
             .article-shell {
-                padding: 3rem 0 5rem;
+                padding: 6rem 0 5rem;
             }
 
             .article-header {

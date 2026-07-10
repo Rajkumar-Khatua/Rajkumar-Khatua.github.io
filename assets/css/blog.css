@@ -388,9 +388,7 @@
                 align-items: flex-start;
             }
         }
-
-
-
+        @media (max-width: 768px) {
             .blog-hero {
                 padding: 10.5rem 0 2rem;
             }

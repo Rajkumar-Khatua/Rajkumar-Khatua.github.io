@@ -66,15 +66,20 @@ const projectId = 'kj3bgy2n';
                   <span class="blog-dot"></span>
                  <span class="blog-label">Case Study</span>
                 </div>
-                <h3 class="blog-card-title">${postTitle}</h3>
+                <h3 class="blog-card-title"><a href="post.html?slug=${slug}" style="color: inherit; text-decoration: none;">${postTitle}</a></h3>
                 <p class="blog-card-excerpt">${excerpt}</p>
                 <a class="blog-read" href="post.html?slug=${slug}">
-                  View Case Study <span>-></span>
+                  View Case Study <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
                 </a>
               </div>
             </article>
           `;
                 }).join('');
+                
+                // Render the newly added lucide icons
+                if (window.lucide) {
+                    lucide.createIcons();
+                }
             } catch (error) {
                 console.error('Blog load error:', error);
                 statusEl.style.display = 'block';
