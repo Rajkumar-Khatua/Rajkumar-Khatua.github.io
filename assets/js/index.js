@@ -250,7 +250,9 @@ if (magnetForm) {
         },
         body: JSON.stringify({
           email,
-          _subject: subject
+          _subject: subject,
+          Message: "A visitor on your website has requested the free 5-Point Zoho Analytics Audit Checklist!",
+          Action_Required: "Please reply to this email, attach the PDF checklist, and ask them about their current data reporting bottlenecks."
         })
       });
 
