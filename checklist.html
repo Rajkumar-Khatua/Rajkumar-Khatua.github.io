@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Zoho Analytics Audit Checklist | Rajkumar Khatua</title>
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+  <!-- Primary SEO -->
+  <meta name="description" content="Download the free 5-Point Zoho Analytics Audit Checklist to discover hidden reporting bottlenecks and find out if your data is actually reliable." />
+  <meta name="theme-color" content="#0d1b2a" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" />
+
+  <link rel="stylesheet" href="assets/site.css" />
+  <link rel="stylesheet" href="assets/css/navbar.css" />
+  <script>const savedTheme = localStorage.getItem('theme') || 'light'; document.documentElement.setAttribute('data-theme', savedTheme);</script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="assets/js/navbar.js"></script>
+
+  <style>
+    /* Center the magnet section on this dedicated page */
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .main-content {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 80px; /* Offset for navbar */
+    }
+    .magnet-section {
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar (Links back to Home) -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-inner">
+        <a href="index.html" class="logo">RK<span>.</span></a>
+        <div class="nav-links">
+          <a href="index.html#projects">Projects</a>
+          <a href="index.html#about">About</a>
+          <a href="index.html#services">Services</a>
+          <a href="blog.html">Case Studies</a>
+          <a href="index.html#contact">Contact</a>
+        </div>
+        <div class="nav-right">
+          <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+            <i data-lucide="moon" class="moon-icon"></i>
+            <i data-lucide="sun" class="sun-icon" style="display: none;"></i>
+          </button>
+          <a href="index.html#contact" class="btn-primary">Work With Me</a>
+          <button class="menu-toggle" id="mobileMenuBtn" aria-label="Toggle mobile menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <div class="mobile-menu-logo">RK<span>.</span></div>
+      <button class="mobile-menu-close" id="mobileMenuClose">
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+    <ul class="mobile-menu-links">
+      <li><a href="index.html#projects">Projects</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="blog.html">Case Studies</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <div class="mobile-menu-footer">
+      <a href="index.html#contact" class="btn-primary" style="width: 100%; text-align: center;">Work With Me</a>
+    </div>
+  </div>
+  <div class="nav-backdrop" id="navBackdrop"></div>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <section id="lead-magnet" class="magnet-section">
+      <div class="magnet-container reveal" style="transform: none; opacity: 1;">
+        <div class="magnet-content">
+          <div class="magnet-badge">Free Resource</div>
+          <h2>Not ready to hire yet?</h2>
+          <p>Get my free <strong>5-Point Zoho Analytics Audit Checklist</strong> to discover hidden reporting bottlenecks and find out if your data is actually reliable.</p>
+          
+          <form id="magnetForm" class="magnet-form" action="https://formspree.io/f/mnjoaypg" method="POST">
+            <input type="hidden" name="_subject" value="New Checklist Request!" />
+            <input type="email" name="email" placeholder="Enter your best email..." required />
+            <button type="submit" id="magnetSubmitBtn" class="btn-dark">Send me the Checklist <i data-lucide="arrow-right" class="btn-icon"></i></button>
+          </form>
+          
+          <div id="magnetSuccess" style="display: none; padding: 1rem; background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); color: #4ade80; border-radius: 8px; margin-bottom: 1rem; font-weight: 600;">
+            <i data-lucide="check-circle" style="vertical-align: middle; margin-right: 5px; width: 18px;"></i> Awesome! Check your inbox shortly.
+          </div>
+          
+          <div class="magnet-sub">No spam. Just actionable Zoho Analytics insights.</div>
+        </div>
+        <div class="magnet-visual">
+          <div class="magnet-doc">
+            <div class="doc-header"></div>
+            <div class="doc-line"></div>
+            <div class="doc-line short"></div>
+            <div class="doc-check"><i data-lucide="check-square"></i> Data Quality Check</div>
+            <div class="doc-check"><i data-lucide="check-square"></i> ROI Dashboards</div>
+            <div class="doc-check"><i data-lucide="check-square"></i> Sync Errors</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-left">
+        <a href="index.html" class="logo">RK<span>.</span></a>
+        <p>Turning data into decisions. Zoho Analytics & Business Intelligence consulting.</p>
+      </div>
+      <div class="footer-right">
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/rajkumarkhatua/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <i data-lucide="linkedin"></i>
+          </a>
+          <a href="mailto:work.rajkumarkhatua@gmail.com" aria-label="Email">
+            <i data-lucide="mail"></i>
+          </a>
+        </div>
+        <p class="copyright">&copy; 2024 Rajkumar Khatua. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+    
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mnjoaypg';
+    const magnetForm = document.getElementById('magnetForm');
+    const magnetSuccess = document.getElementById('magnetSuccess');
+    const magnetSubmitBtn = document.getElementById('magnetSubmitBtn');
+
+    if (magnetForm) {
+      magnetForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = magnetForm.email.value.trim();
+        const subject = magnetForm._subject.value;
+        if (!email) return;
+
+        magnetSubmitBtn.textContent = 'Sending...';
+        magnetSubmitBtn.disabled = true;
+
+        try {
+          const response = await fetch(FORMSPREE_ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({ email, _subject: subject })
+          });
+
+          if (response.ok) {
+            magnetForm.reset();
+            magnetForm.style.display = 'none';
+            magnetSuccess.style.display = 'block';
+            lucide.createIcons();
+          } else {
+            alert('Oops! There was a problem submitting your request.');
+            magnetSubmitBtn.innerHTML = 'Send me the Checklist <i data-lucide="arrow-right" class="btn-icon"></i>';
+            lucide.createIcons();
+            magnetSubmitBtn.disabled = false;
+          }
+        } catch (error) {
+          alert('Oops! There was a problem submitting your request.');
+          magnetSubmitBtn.innerHTML = 'Send me the Checklist <i data-lucide="arrow-right" class="btn-icon"></i>';
+          lucide.createIcons();
+          magnetSubmitBtn.disabled = false;
+        }
+      });
+    }
+  </script>
+</body>
+</html>
