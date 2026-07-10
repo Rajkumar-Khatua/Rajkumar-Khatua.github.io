@@ -944,7 +944,7 @@
     .demo-btn:hover {
       background: var(--navy);
       color: #ffffff;
-      border-color: var(--heading-color);
+      border-color: var(--accent);
     }
 
     .proof-strip {
