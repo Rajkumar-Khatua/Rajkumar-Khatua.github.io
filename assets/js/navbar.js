@@ -191,8 +191,58 @@ document.addEventListener("DOMContentLoaded", () => {
         if (mobileFreeAuditBtn) mobileFreeAuditBtn.addEventListener('click', openCalendlyPopup);
     }
 
-    // --- Sitewide Features (Scroll Progress & Cookie Banner) ---
+    // --- Sitewide Features (Cursor, Scroll Progress & Cookie Banner) ---
     function initSitewideFeatures() {
+        // 0. Custom Cursor
+        let cursor = document.getElementById('cursor');
+        let cursorRing = document.getElementById('cursorRing');
+        
+        if (!cursor) {
+            cursor = document.createElement('div');
+            cursor.className = 'cursor';
+            cursor.id = 'cursor';
+            document.body.appendChild(cursor);
+        }
+        if (!cursorRing) {
+            cursorRing = document.createElement('div');
+            cursorRing.className = 'cursor-ring';
+            cursorRing.id = 'cursorRing';
+            document.body.appendChild(cursorRing);
+        }
+
+        const useCustomCursor = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+        if (useCustomCursor) {
+            let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                cursor.style.left = mouseX + 'px';
+                cursor.style.top = mouseY + 'px';
+            });
+            function animateRing() {
+                ringX += (mouseX - ringX) * 0.12;
+                ringY += (mouseY - ringY) * 0.12;
+                cursorRing.style.left = ringX + 'px';
+                cursorRing.style.top = ringY + 'px';
+                requestAnimationFrame(animateRing);
+            }
+            animateRing();
+
+            // Delegate hover events for performance
+            document.addEventListener('mouseover', (e) => {
+                const target = e.target.closest('a, button, .service-card, .project-card, .t-card, .exp-card, .hl-card, .photo-frame, .about-photo-wrap, .error-btn');
+                if (target) cursorRing.classList.add('hover');
+            });
+            document.addEventListener('mouseout', (e) => {
+                const target = e.target.closest('a, button, .service-card, .project-card, .t-card, .exp-card, .hl-card, .photo-frame, .about-photo-wrap, .error-btn');
+                if (target) cursorRing.classList.remove('hover');
+            });
+        } else {
+            cursor.style.display = 'none';
+            cursorRing.style.display = 'none';
+            document.body.style.cursor = 'auto';
+        }
+
         // 1. Scroll Progress Bar
         const progressBar = document.createElement('div');
         progressBar.id = 'scroll-progress';

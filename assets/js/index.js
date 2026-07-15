@@ -1,36 +1,3 @@
-const cursor = document.getElementById('cursor');
-    const cursorRing = document.getElementById('cursorRing');
-    const useCustomCursor = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-    const isMobileViewport = window.matchMedia('(max-width: 768px)').matches;
-
-    if (useCustomCursor) {
-      let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
-
-      document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        cursor.style.left = mouseX + 'px';
-        cursor.style.top = mouseY + 'px';
-      });
-
-      function animateRing() {
-        ringX += (mouseX - ringX) * 0.12;
-        ringY += (mouseY - ringY) * 0.12;
-        cursorRing.style.left = ringX + 'px';
-        cursorRing.style.top = ringY + 'px';
-        requestAnimationFrame(animateRing);
-      }
-      animateRing();
-
-      document.querySelectorAll('a,button,.service-card,.project-card,.t-card,.exp-card,.hl-card,.photo-frame,.about-photo-wrap').forEach(el => {
-        el.addEventListener('mouseenter', () => cursorRing.classList.add('hover'));
-        el.addEventListener('mouseleave', () => cursorRing.classList.remove('hover'));
-      });
-    } else {
-      cursor.style.display = 'none';
-      cursorRing.style.display = 'none';
-      document.body.style.cursor = 'auto';
-    }
 
     // Navbar scroll moved to navbar.js
 
