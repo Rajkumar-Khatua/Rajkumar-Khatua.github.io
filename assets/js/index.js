@@ -282,6 +282,9 @@ function initProjectFilters() {
                 
                 if (filterValue === 'all' || filterValue === category) {
                     card.classList.remove('hide');
+                    // Strip the reveal classes to prevent fadeUp conflict
+                    card.classList.remove('reveal', 'reveal-delay-1', 'reveal-delay-2', 'reveal-delay-3', 'reveal-delay-4', 'visible');
+                    
                     // Trigger reflow
                     void card.offsetWidth;
                     card.classList.add('fade-in');

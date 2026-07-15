@@ -1655,6 +1655,30 @@
       letter-spacing: 0.5px;
     }
 
+    .footer-socials {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .social-icon {
+      color: rgba(255, 255, 255, 0.4);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .social-icon:hover {
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .social-icon svg, .social-icon i {
+      width: 20px;
+      height: 20px;
+    }
+
     @keyframes fadeUp {
       from {
         opacity: 0;
@@ -1757,8 +1781,12 @@
         scroll-behavior: auto;
       }
 
-      body {
-        cursor: auto;
+      * {
+        cursor: auto !important;
+      }
+
+      a, button, .project-card, input, textarea, .filter-btn, .social-icon {
+        cursor: pointer !important;
       }
 
       .cursor,
