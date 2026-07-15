@@ -483,6 +483,27 @@
   cursor: none;
 }
 
+/* --- Mobile Overrides for Cookie Banner --- */
+@media (max-width: 480px) {
+  #cookie-banner {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    max-width: none;
+    width: auto;
+    padding: 1rem;
+  }
+  .cookie-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+  .cookie-btn {
+    width: 100%;
+    text-align: center;
+    padding: 0.8rem;
+  }
+}
+
 /* --- Footer Socials --- */
 .footer-socials {
   display: flex;
