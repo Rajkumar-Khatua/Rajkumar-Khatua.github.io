@@ -262,8 +262,8 @@ document.addEventListener("DOMContentLoaded", () => {
             cookieBanner.id = 'cookie-banner';
             cookieBanner.innerHTML = `
                 <div class="cookie-content">
-                    <p>We use cookies to analyze site traffic and improve your experience.</p>
-                    <button id="cookieAcceptBtn" class="btn-dark" style="padding: 0.4rem 1rem; font-size: 0.9rem;">Accept</button>
+                    <p>Grab a cookie! 🍪 We use them just to make sure the site is working nicely for you.</p>
+                    <button id="cookieAcceptBtn" class="btn-dark" style="padding: 0.4rem 1rem; font-size: 0.9rem;">Got it!</button>
                 </div>
             `;
             document.body.appendChild(cookieBanner);
