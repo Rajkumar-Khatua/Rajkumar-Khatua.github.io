@@ -190,4 +190,42 @@ document.addEventListener("DOMContentLoaded", () => {
         if (navFreeAuditBtn) navFreeAuditBtn.addEventListener('click', openCalendlyPopup);
         if (mobileFreeAuditBtn) mobileFreeAuditBtn.addEventListener('click', openCalendlyPopup);
     }
+
+    // --- Sitewide Features (Scroll Progress & Cookie Banner) ---
+    function initSitewideFeatures() {
+        // 1. Scroll Progress Bar
+        const progressBar = document.createElement('div');
+        progressBar.id = 'scroll-progress';
+        document.body.appendChild(progressBar);
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            // Prevent division by zero on very short pages
+            const scrollPercent = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+            progressBar.style.width = scrollPercent + '%';
+        });
+
+        // 2. Cookie Consent Banner
+        if (!localStorage.getItem('cookieConsent')) {
+            const cookieBanner = document.createElement('div');
+            cookieBanner.id = 'cookie-banner';
+            cookieBanner.innerHTML = `
+                <div class="cookie-content">
+                    <p>We use cookies to analyze site traffic and improve your experience.</p>
+                    <button id="cookieAcceptBtn" class="btn-dark" style="padding: 0.4rem 1rem; font-size: 0.9rem;">Accept</button>
+                </div>
+            `;
+            document.body.appendChild(cookieBanner);
+
+            document.getElementById('cookieAcceptBtn').addEventListener('click', () => {
+                localStorage.setItem('cookieConsent', 'true');
+                cookieBanner.style.opacity = '0';
+                cookieBanner.style.transform = 'translateY(20px)';
+                setTimeout(() => cookieBanner.remove(), 300);
+            });
+        }
+    }
+    
+    initSitewideFeatures();
 });

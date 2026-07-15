@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TRY624F47L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+  
+      gtag('config', 'G-TRY624F47L');
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Not Found | Rajkumar Khatua</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500;600&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="assets/site.css" />
+    <link rel="stylesheet" href="assets/css/navbar.css" />
+    <script>const savedTheme = localStorage.getItem('theme') || 'light'; document.documentElement.setAttribute('data-theme', savedTheme);</script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="assets/js/navbar.js"></script>
+    <style>
+        .error-section {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+        }
+        .error-content {
+            max-width: 600px;
+        }
+        .error-title {
+            font-size: 8rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 40px rgba(212, 175, 55, 0.2);
+        }
+        .error-subtitle {
+            font-size: 2rem;
+            color: var(--heading-color);
+            margin-bottom: 1.5rem;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .error-text {
+            color: var(--text2);
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+        .error-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--navy);
+            color: var(--white);
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        .error-btn:hover {
+            background: var(--blue);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar-container"></div>
+
+    <section class="error-section">
+        <div class="error-content">
+            <div class="error-title">404</div>
+            <h1 class="error-subtitle">Page Not Found</h1>
+            <p class="error-text">Looks like you got lost in the data! The page you are looking for doesn't exist, was moved, or is temporarily unavailable.</p>
+            <a href="index.html" class="error-btn"><i data-lucide="home"></i> Back to Dashboard</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-logo">Rajkumar Khatua<span>.</span></div>
+            <div class="footer-right">© 2026 | BI & Zoho Analytics Specialist | Kolkata, India</div>
+        </div>
+    </footer>
+
+    <script src="assets/js/scroll_top.js"></script>
+    <script>
+        document.addEventListener('navbarLoaded', () => {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
