@@ -285,18 +285,13 @@ document.addEventListener("DOMContentLoaded", () => {
             cookieBanner.innerHTML = `
                 <div class="cookie-content">
                     <p>Grab a cookie! 🍪 We use them just to make sure the site is working nicely for you.</p>
-                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                        <button id="cookieAcceptBtn" class="btn-dark" style="padding: 0.4rem 1rem; font-size: 0.9rem;">I love cookies! 🍪</button>
-                        <button id="cookieRejectBtn" style="padding: 0.4rem 1rem; font-size: 0.9rem; background: transparent; border: 1px solid var(--text2); color: var(--text2); border-radius: 4px; cursor: pointer; transition: all 0.3s ease;">I'm on a diet</button>
+                    <div class="cookie-buttons">
+                        <button id="cookieAcceptBtn" class="cookie-btn cookie-accept">I love cookies! 🍪</button>
+                        <button id="cookieRejectBtn" class="cookie-btn cookie-reject">I'm on a diet</button>
                     </div>
                 </div>
             `;
             document.body.appendChild(cookieBanner);
-
-            // Add hover effect for reject button
-            const rejectBtn = document.getElementById('cookieRejectBtn');
-            rejectBtn.addEventListener('mouseenter', () => { rejectBtn.style.color = 'var(--text)'; rejectBtn.style.borderColor = 'var(--text)'; });
-            rejectBtn.addEventListener('mouseleave', () => { rejectBtn.style.color = 'var(--text2)'; rejectBtn.style.borderColor = 'var(--text2)'; });
 
             document.getElementById('cookieAcceptBtn').addEventListener('click', () => {
                 localStorage.setItem('cookieConsent', 'accepted');
