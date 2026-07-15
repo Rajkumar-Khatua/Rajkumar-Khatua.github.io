@@ -90,6 +90,7 @@
   </noscript>
 
   <link rel="stylesheet" href="assets/site.css?v=2" />
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/navbar.css?v=2" />
   <script>const savedTheme = localStorage.getItem('theme') || 'light'; document.documentElement.setAttribute('data-theme', savedTheme);</script>
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -136,7 +137,7 @@
       </div>
 
       <div class="hero-btns">
-        <a href="#contact" class="btn-dark">Get Free Audit</a>
+        <a href="#" class="btn-dark calendly-trigger">Get Free Audit</a>
         <a href="#projects" class="btn-outline">View Solutions</a>
       </div>
     </div>
@@ -293,8 +294,15 @@
         smarter executive decisions.</p>
     </div>
 
+    <div class="project-filters reveal reveal-delay-2">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="dashboards">Dashboards</button>
+      <button class="filter-btn" data-filter="infrastructure">Data Infrastructure</button>
+      <button class="filter-btn" data-filter="strategy">Strategy</button>
+    </div>
+
     <div class="projects-grid">
-      <div class="project-card reveal">
+      <div class="project-card reveal" data-category="dashboards">
         <div class="project-top">
           <div class="project-num">Dashboard 01 - Manufacturing
             BI</div>
@@ -324,7 +332,7 @@
         </div>
       </div>
 
-      <div class="project-card reveal reveal-delay-1">
+      <div class="project-card reveal reveal-delay-1" data-category="dashboards">
         <div class="project-top">
           <div class="project-num">Dashboard 02 - Manufacturing BI</div>
           <div class="project-title"><i data-lucide="layout-dashboard" class="project-icon"></i> Product Performance & Profitability Intelligence</div>
@@ -352,7 +360,7 @@
         </div>
       </div>
 
-      <div class="project-card reveal reveal-delay-2">
+      <div class="project-card reveal reveal-delay-2" data-category="dashboards">
         <div class="project-top">
           <div class="project-num">Dashboard 03 - Manufacturing BI</div>
           <div class="project-title"><i data-lucide="layout-dashboard" class="project-icon"></i> Customer & Sales Performance Analytics</div>
@@ -379,7 +387,7 @@
         </div>
       </div>
 
-      <div class="project-card reveal reveal-delay-3">
+      <div class="project-card reveal reveal-delay-3" data-category="infrastructure">
         <div class="project-top">
           <div class="project-num">System 01 - Financial BI</div>
           <div class="project-title"><i data-lucide="layout-dashboard" class="project-icon"></i> Employee Billing & Cost Control System</div>
@@ -404,7 +412,7 @@
         </div>
       </div>
 
-      <div class="project-card reveal reveal-delay-4">
+      <div class="project-card reveal reveal-delay-4" data-category="strategy">
         <div class="project-top">
           <div class="project-num">System 02 - Financial BI</div>
           <div class="project-title"><i data-lucide="layout-dashboard" class="project-icon"></i> ROI & Profitability Intelligence Platform</div>
@@ -428,7 +436,7 @@
         </div>
       </div>
 
-      <div class="project-card reveal reveal-delay-4">
+      <div class="project-card reveal reveal-delay-4" data-category="strategy">
         <div class="project-top">
           <div class="project-num">System 03 - Operational BI</div>
           <div class="project-title"><i data-lucide="layout-dashboard" class="project-icon"></i> Operational Performance Analytics System</div>
@@ -454,7 +462,7 @@
 
       </div>
 
-      <div class="project-card reveal reveal-delay-4">
+      <div class="project-card reveal reveal-delay-4" data-category="dashboards">
         <div class="project-top">
           <div class="project-num">System 04 - Operational BI</div>
           <div class="project-title"><i data-lucide="layout-dashboard" class="project-icon"></i> ProjectPulse - Operational Intelligence for Zoho Projects</div>
@@ -649,6 +657,7 @@
         <p class="about-body">I work at the intersection of <strong>data architecture and business strategy</strong>,
           designing analytical frameworks that show leaders what matters, where risk is building, and what to do next.
         </p>
+        <a href="assets/Rajkumar_Khatua_Executive_Summary.pdf" class="btn-dark" download style="margin-top: 1.5rem; display: inline-block;">Download Executive One-Pager <i data-lucide="download" style="width: 18px; height: 18px; margin-left: 6px; vertical-align: middle;"></i></a>
         <p class="about-body">From financial intelligence to operational performance, I build BI systems that run
           quietly in the background and give decision-makers sharper visibility when it counts.</p>
         <p class="about-body">Based in <strong>Kolkata, India</strong>, working with organizations across North
@@ -894,7 +903,7 @@
 
 
 
-  <button type="button" class="sticky-cta" id="freeAuditBtn" aria-label="Open free audit booking popup">
+  <button type="button" class="sticky-cta calendly-trigger" id="freeAuditBtn" aria-label="Open free audit booking popup">
     Request Free Audit
   </button>
 
@@ -921,6 +930,7 @@
   lucide.createIcons();
 </script>
   <script src="/assets/js/network.js"></script>
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
     <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
     </button>

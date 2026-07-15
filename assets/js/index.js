@@ -261,5 +261,61 @@ modal.addEventListener('click', (e) => {
     }
 });
 
+// Project Filtering
+function initProjectFilters() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const filterValue = btn.getAttribute('data-filter');
+
+            projectCards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                
+                // Reset classes
+                card.classList.remove('fade-in');
+                
+                if (filterValue === 'all' || filterValue === category) {
+                    card.classList.remove('hide');
+                    // Trigger reflow
+                    void card.offsetWidth;
+                    card.classList.add('fade-in');
+                } else {
+                    card.classList.add('hide');
+                }
+            });
+        });
+    });
+}
+
+document.addEventListener("DOMContentLoaded", initProjectFilters);
+
 
 // Removed dead tsParticles logic as it's handled by network.js on canvas
+
+// Initialize Calendly
+function initCalendly() {
+    const calendlyBtns = document.querySelectorAll('.calendly-trigger');
+    calendlyBtns.forEach(btn => {
+        btn.removeEventListener('click', openCalendly);
+        btn.addEventListener('click', openCalendly);
+    });
+}
+
+function openCalendly(e) {
+    e.preventDefault();
+    if (window.Calendly) {
+        Calendly.initPopupWidget({ url: 'https://calendly.com/rajkumarkhatua/30min' });
+    } else {
+        console.warn("Calendly is not loaded yet.");
+    }
+}
+
+// Bind on load and when navbar loads
+document.addEventListener("DOMContentLoaded", initCalendly);
+document.addEventListener('navbarLoaded', initCalendly);
