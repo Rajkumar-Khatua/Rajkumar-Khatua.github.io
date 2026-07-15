@@ -89,10 +89,21 @@
       color: var(--accent) !important;
       font-weight: 600;
       letter-spacing: 1px;
+      animation: textGlow 2.5s infinite alternate;
     }
 
     .nav-highlight:hover {
-      text-shadow: 0 0 15px rgba(200, 169, 110, 0.4);
+      text-shadow: 0 0 15px rgba(200, 169, 110, 0.8);
+      animation: none;
+    }
+
+    @keyframes textGlow {
+      0% {
+        text-shadow: 0 0 2px rgba(200, 169, 110, 0.2);
+      }
+      100% {
+        text-shadow: 0 0 10px rgba(200, 169, 110, 0.7), 0 0 18px rgba(200, 169, 110, 0.4);
+      }
     }
 
     .nav-cta {
