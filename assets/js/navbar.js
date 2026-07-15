@@ -256,24 +256,64 @@ document.addEventListener("DOMContentLoaded", () => {
             progressBar.style.width = scrollPercent + '%';
         });
 
+        function loadGoogleAnalytics() {
+            if (window.gtag) return;
+            const script1 = document.createElement('script');
+            script1.async = true;
+            script1.src = 'https://www.googletagmanager.com/gtag/js?id=G-TRY624F47L';
+            document.head.appendChild(script1);
+
+            const script2 = document.createElement('script');
+            script2.innerHTML = `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-TRY624F47L');
+            `;
+            document.head.appendChild(script2);
+        }
+
         // 2. Cookie Consent Banner
-        if (!localStorage.getItem('cookieConsent')) {
+        const consentState = localStorage.getItem('cookieConsent');
+        if (consentState === 'accepted' || consentState === 'true') {
+            loadGoogleAnalytics();
+            // Upgrade old 'true' state to 'accepted'
+            if (consentState === 'true') localStorage.setItem('cookieConsent', 'accepted');
+        } else if (!consentState) {
             const cookieBanner = document.createElement('div');
             cookieBanner.id = 'cookie-banner';
             cookieBanner.innerHTML = `
                 <div class="cookie-content">
                     <p>Grab a cookie! 🍪 We use them just to make sure the site is working nicely for you.</p>
-                    <button id="cookieAcceptBtn" class="btn-dark" style="padding: 0.4rem 1rem; font-size: 0.9rem;">Got it!</button>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <button id="cookieAcceptBtn" class="btn-dark" style="padding: 0.4rem 1rem; font-size: 0.9rem;">I love cookies! 🍪</button>
+                        <button id="cookieRejectBtn" style="padding: 0.4rem 1rem; font-size: 0.9rem; background: transparent; border: 1px solid var(--text2); color: var(--text2); border-radius: 4px; cursor: pointer; transition: all 0.3s ease;">I'm on a diet</button>
+                    </div>
                 </div>
             `;
             document.body.appendChild(cookieBanner);
 
+            // Add hover effect for reject button
+            const rejectBtn = document.getElementById('cookieRejectBtn');
+            rejectBtn.addEventListener('mouseenter', () => { rejectBtn.style.color = 'var(--text)'; rejectBtn.style.borderColor = 'var(--text)'; });
+            rejectBtn.addEventListener('mouseleave', () => { rejectBtn.style.color = 'var(--text2)'; rejectBtn.style.borderColor = 'var(--text2)'; });
+
             document.getElementById('cookieAcceptBtn').addEventListener('click', () => {
-                localStorage.setItem('cookieConsent', 'true');
+                localStorage.setItem('cookieConsent', 'accepted');
+                loadGoogleAnalytics();
+                closeBanner();
+            });
+
+            rejectBtn.addEventListener('click', () => {
+                localStorage.setItem('cookieConsent', 'rejected');
+                closeBanner();
+            });
+
+            function closeBanner() {
                 cookieBanner.style.opacity = '0';
                 cookieBanner.style.transform = 'translateY(20px)';
                 setTimeout(() => cookieBanner.remove(), 300);
-            });
+            }
         }
     }
     
