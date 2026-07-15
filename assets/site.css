@@ -37,7 +37,6 @@
       font-weight: 300;
       font-size: 16px;
       line-height: 1.75;
-      cursor: none;
     }
 
     #services,
@@ -2325,50 +2324,4 @@
   .magnet-visual {
     display: none;
   }
-}
-
-/* --- Sitewide Features (Scroll Progress & Cookie Banner) --- */
-#scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 3px;
-  background: var(--accent);
-  z-index: 9999;
-  width: 0%;
-  transition: width 0.1s ease-out;
-  box-shadow: 0 0 10px var(--accent);
-}
-
-#cookie-banner {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  z-index: 9998;
-  background: rgba(13, 27, 42, 0.95);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--gold-border);
-  border-radius: 8px;
-  padding: 1rem 1.5rem;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  transition: all 0.3s ease;
-  max-width: 320px;
-}
-
-[data-theme="light"] #cookie-banner {
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-
-.cookie-content {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.cookie-content p {
-  margin: 0;
-  font-size: 0.9rem;
-  color: var(--text2);
-  line-height: 1.4;
 }
