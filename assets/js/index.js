@@ -258,45 +258,7 @@ closeBtn.addEventListener('click', () => {
 modal.addEventListener('click', (e) => {
     if (e.target === modal) {
         modal.classList.remove('active');
-    }
 });
-
-// Project Filtering
-function initProjectFilters() {
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
-
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Remove active class
-            filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            const filterValue = btn.getAttribute('data-filter');
-
-            projectCards.forEach(card => {
-                const category = card.getAttribute('data-category');
-                
-                // Reset classes
-                card.classList.remove('fade-in');
-                
-                if (filterValue === 'all' || filterValue === category) {
-                    card.classList.remove('hide');
-                    // Strip the reveal classes to prevent fadeUp conflict
-                    card.classList.remove('reveal', 'reveal-delay-1', 'reveal-delay-2', 'reveal-delay-3', 'reveal-delay-4', 'visible');
-                    
-                    // Trigger reflow
-                    void card.offsetWidth;
-                    card.classList.add('fade-in');
-                } else {
-                    card.classList.add('hide');
-                }
-            });
-        });
-    });
-}
-
-document.addEventListener("DOMContentLoaded", initProjectFilters);
 
 
 // Removed dead tsParticles logic as it's handled by network.js on canvas
