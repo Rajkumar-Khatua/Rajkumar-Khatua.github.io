@@ -258,6 +258,7 @@ closeBtn.addEventListener('click', () => {
 modal.addEventListener('click', (e) => {
     if (e.target === modal) {
         modal.classList.remove('active');
+    }
 });
 
 
