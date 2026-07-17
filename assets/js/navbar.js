@@ -187,8 +187,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
-        if (navFreeAuditBtn) navFreeAuditBtn.addEventListener('click', openCalendlyPopup);
-        if (mobileFreeAuditBtn) mobileFreeAuditBtn.addEventListener('click', openCalendlyPopup);
+        const allCalendlyBtns = document.querySelectorAll('.calendly-trigger');
+        allCalendlyBtns.forEach(btn => btn.addEventListener('click', openCalendlyPopup));
     }
 
     // --- Sitewide Features (Cursor, Scroll Progress & Cookie Banner) ---

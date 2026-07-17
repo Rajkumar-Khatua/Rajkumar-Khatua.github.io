@@ -264,24 +264,3 @@ modal.addEventListener('click', (e) => {
 
 // Removed dead tsParticles logic as it's handled by network.js on canvas
 
-// Initialize Calendly
-function initCalendly() {
-    const calendlyBtns = document.querySelectorAll('.calendly-trigger');
-    calendlyBtns.forEach(btn => {
-        btn.removeEventListener('click', openCalendly);
-        btn.addEventListener('click', openCalendly);
-    });
-}
-
-function openCalendly(e) {
-    e.preventDefault();
-    if (window.Calendly) {
-        Calendly.initPopupWidget({ url: 'https://calendly.com/rajkumarkhatua/30min' });
-    } else {
-        console.warn("Calendly is not loaded yet.");
-    }
-}
-
-// Bind on load and when navbar loads
-document.addEventListener("DOMContentLoaded", initCalendly);
-document.addEventListener('navbarLoaded', initCalendly);
