@@ -1611,13 +1611,13 @@
       letter-spacing: 0.5px;
     }
 
-    .footer-socials {
+    .footer-links {
       display: flex;
       gap: 1.5rem;
       align-items: center;
     }
 
-    .social-icon {
+    .footer-link-icon {
       color: rgba(255, 255, 255, 0.4);
       transition: all 0.3s ease;
       display: flex;
@@ -1625,12 +1625,12 @@
       justify-content: center;
     }
 
-    .social-icon:hover {
+    .footer-link-icon:hover {
       color: var(--accent);
       transform: translateY(-2px);
     }
 
-    .social-icon svg, .social-icon i {
+    .footer-link-icon svg, .footer-link-icon i {
       width: 20px;
       height: 20px;
     }
