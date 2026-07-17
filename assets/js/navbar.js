@@ -135,60 +135,12 @@ document.addEventListener("DOMContentLoaded", () => {
         if (themeBtn) themeBtn.addEventListener('click', toggleThemeFunc);
         if (themeBtnMobile) themeBtnMobile.addEventListener('click', toggleThemeFunc);
 
-        // Calendly Logic
-        const navFreeAuditBtn = document.getElementById('navFreeAuditBtn');
-        const mobileFreeAuditBtn = document.getElementById('mobileFreeAuditBtn');
-        const calendlyUrl = 'https://calendly.com/work-rajkumarkhatua/30min?hide_gdpr_banner=1';
-        let calendlyLoaderPromise;
-
-        function ensureCalendly() {
-            if (typeof Calendly !== 'undefined' && typeof Calendly.initPopupWidget === 'function') {
-                return Promise.resolve(Calendly);
-            }
-            if (calendlyLoaderPromise) return calendlyLoaderPromise;
-
-            calendlyLoaderPromise = new Promise((resolve, reject) => {
-                if (!document.querySelector('link[data-calendly-widget]')) {
-                    const link = document.createElement('link');
-                    link.rel = 'stylesheet';
-                    link.href = 'https://assets.calendly.com/assets/external/widget.css';
-                    link.dataset.calendlyWidget = 'true';
-                    document.head.appendChild(link);
-                }
-                const existingScript = document.querySelector('script[data-calendly-widget]');
-                if (existingScript) {
-                    existingScript.addEventListener('load', () => resolve(window.Calendly), { once: true });
-                    existingScript.addEventListener('error', reject, { once: true });
-                    return;
-                }
-                const script = document.createElement('script');
-                script.src = 'https://assets.calendly.com/assets/external/widget.js';
-                script.async = true;
-                script.dataset.calendlyWidget = 'true';
-                script.onload = () => resolve(window.Calendly);
-                script.onerror = reject;
-                document.body.appendChild(script);
-            });
-            return calendlyLoaderPromise;
-        }
-
-        async function openCalendlyPopup(e) {
-            if (e) e.preventDefault();
-            try {
-                await ensureCalendly();
-            } catch (error) {
-                window.open(calendlyUrl, '_blank', 'noopener');
-                return;
-            }
-            if (typeof Calendly !== 'undefined' && typeof Calendly.initPopupWidget === 'function') {
-                Calendly.initPopupWidget({ url: calendlyUrl });
-            } else {
-                window.open(calendlyUrl, '_blank', 'noopener');
-            }
-        }
-
-        const allCalendlyBtns = document.querySelectorAll('.calendly-trigger');
-        allCalendlyBtns.forEach(btn => btn.addEventListener('click', openCalendlyPopup));
+        // Cal.com Logic
+        (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+        Cal("init", "free-audit", {origin:"https://app.cal.com"});
+        Cal.config = Cal.config || {};
+        Cal.config.forwardQueryParams = true;
+        Cal.ns["free-audit"]("ui", {"cssVarsPerTheme":{"light":{"cal-brand":"#0d1b2a"},"dark":{"cal-brand":"#c8a96e"}},"hideEventTypeDetails":false,"layout":"month_view"});
     }
 
     // --- Sitewide Features (Cursor, Scroll Progress & Cookie Banner) ---
