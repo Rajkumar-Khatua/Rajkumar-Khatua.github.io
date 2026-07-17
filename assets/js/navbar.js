@@ -108,17 +108,22 @@ document.addEventListener("DOMContentLoaded", () => {
         const htmlEl = document.documentElement;
         
         function toggleThemeFunc() {
-            const currentTheme = htmlEl.getAttribute('data-theme');
-            if (currentTheme === 'dark') {
+            if (htmlEl.getAttribute('data-theme') === 'dark') {
                 htmlEl.removeAttribute('data-theme');
                 localStorage.setItem('theme', 'light');
                 if (themeBtn) themeBtn.innerHTML = '<i data-lucide="moon"></i>';
                 if (themeBtnMobile) themeBtnMobile.innerHTML = '<i data-lucide="moon"></i>';
+                if (typeof Cal !== 'undefined' && Cal.ns && Cal.ns["free-audit"]) {
+                    Cal.ns["free-audit"]("ui", { "theme": "light" });
+                }
             } else {
                 htmlEl.setAttribute('data-theme', 'dark');
                 localStorage.setItem('theme', 'dark');
                 if (themeBtn) themeBtn.innerHTML = '<i data-lucide="sun"></i>';
                 if (themeBtnMobile) themeBtnMobile.innerHTML = '<i data-lucide="sun"></i>';
+                if (typeof Cal !== 'undefined' && Cal.ns && Cal.ns["free-audit"]) {
+                    Cal.ns["free-audit"]("ui", { "theme": "dark" });
+                }
             }
             if (window.lucide) {
                 lucide.createIcons();
@@ -140,7 +145,13 @@ document.addEventListener("DOMContentLoaded", () => {
         Cal("init", "free-audit", {origin:"https://app.cal.com"});
         Cal.config = Cal.config || {};
         Cal.config.forwardQueryParams = true;
-        Cal.ns["free-audit"]("ui", {"cssVarsPerTheme":{"light":{"cal-brand":"#0d1b2a"},"dark":{"cal-brand":"#c8a96e"}},"hideEventTypeDetails":false,"layout":"month_view"});
+        
+        let initialTheme = localStorage.getItem('theme');
+        if (!initialTheme) {
+            initialTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        
+        Cal.ns["free-audit"]("ui", {"theme": initialTheme, "cssVarsPerTheme":{"light":{"cal-brand":"#0d1b2a"},"dark":{"cal-brand":"#c8a96e"}},"hideEventTypeDetails":false,"layout":"month_view"});
     }
 
     // --- Sitewide Features (Cursor, Scroll Progress & Cookie Banner) ---
