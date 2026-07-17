@@ -108,23 +108,33 @@ document.addEventListener("DOMContentLoaded", () => {
         const htmlEl = document.documentElement;
         
         function toggleThemeFunc() {
-            if (htmlEl.getAttribute('data-theme') === 'dark') {
+            const isDark = htmlEl.getAttribute('data-theme') === 'dark';
+            const newTheme = isDark ? 'light' : 'dark';
+            
+            if (isDark) {
                 htmlEl.removeAttribute('data-theme');
                 localStorage.setItem('theme', 'light');
                 if (themeBtn) themeBtn.innerHTML = '<i data-lucide="moon"></i>';
                 if (themeBtnMobile) themeBtnMobile.innerHTML = '<i data-lucide="moon"></i>';
-                if (typeof Cal !== 'undefined' && Cal.ns && Cal.ns["free-audit"]) {
-                    Cal.ns["free-audit"]("ui", { "theme": "light" });
-                }
             } else {
                 htmlEl.setAttribute('data-theme', 'dark');
                 localStorage.setItem('theme', 'dark');
                 if (themeBtn) themeBtn.innerHTML = '<i data-lucide="sun"></i>';
                 if (themeBtnMobile) themeBtnMobile.innerHTML = '<i data-lucide="sun"></i>';
-                if (typeof Cal !== 'undefined' && Cal.ns && Cal.ns["free-audit"]) {
-                    Cal.ns["free-audit"]("ui", { "theme": "dark" });
-                }
             }
+            
+            if (typeof Cal !== 'undefined' && Cal.ns && Cal.ns["free-audit"]) {
+                Cal.ns["free-audit"]("ui", { "theme": newTheme });
+            }
+            
+            document.querySelectorAll('[data-cal-namespace="free-audit"]').forEach(btn => {
+                try {
+                    let config = JSON.parse(btn.getAttribute('data-cal-config') || '{}');
+                    config.theme = newTheme;
+                    btn.setAttribute('data-cal-config', JSON.stringify(config));
+                } catch(e) {}
+            });
+
             if (window.lucide) {
                 lucide.createIcons();
             }
@@ -152,6 +162,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         
         Cal.ns["free-audit"]("ui", {"theme": initialTheme, "cssVarsPerTheme":{"light":{"cal-brand":"#0d1b2a"},"dark":{"cal-brand":"#c8a96e"}},"hideEventTypeDetails":false,"layout":"month_view"});
+        
+        document.querySelectorAll('[data-cal-namespace="free-audit"]').forEach(btn => {
+            try {
+                let config = JSON.parse(btn.getAttribute('data-cal-config') || '{}');
+                config.theme = initialTheme;
+                btn.setAttribute('data-cal-config', JSON.stringify(config));
+            } catch(e) {}
+        });
     }
 
     // --- Sitewide Features (Cursor, Scroll Progress & Cookie Banner) ---
