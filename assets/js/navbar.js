@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Calendly Logic
         const navFreeAuditBtn = document.getElementById('navFreeAuditBtn');
         const mobileFreeAuditBtn = document.getElementById('mobileFreeAuditBtn');
-        const calendlyUrl = 'https://calendly.com/work-rajkumarkhatua/30min';
+        const calendlyUrl = 'https://calendly.com/work-rajkumarkhatua/30min?hide_gdpr_banner=1';
         let calendlyLoaderPromise;
 
         function ensureCalendly() {
