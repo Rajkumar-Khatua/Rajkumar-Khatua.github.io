@@ -66,35 +66,37 @@
       border-radius: 10px;
     }
 
-    .cursor {
-      position: fixed;
-      width: 8px;
-      height: 8px;
-      background: var(--blue);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: transform 0.1s;
-    }
+    @media (hover: hover) and (pointer: fine) {
+      .cursor {
+        position: fixed;
+        width: 8px;
+        height: 8px;
+        background: var(--blue);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition: transform 0.1s;
+      }
 
-    .cursor-ring {
-      position: fixed;
-      width: 36px;
-      height: 36px;
-      border: 1px solid rgba(26, 92, 255, 0.4);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9998;
-      transform: translate(-50%, -50%);
-      transition: transform 0.12s ease, width 0.3s, height 0.3s, border-color 0.3s;
-    }
+      .cursor-ring {
+        position: fixed;
+        width: 36px;
+        height: 36px;
+        border: 1px solid rgba(26, 92, 255, 0.4);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9998;
+        transform: translate(-50%, -50%);
+        transition: transform 0.12s ease, width 0.3s, height 0.3s, border-color 0.3s;
+      }
 
-    .cursor-ring.hover {
-      width: 56px;
-      height: 56px;
-      border-color: var(--accent);
-      background: rgba(200, 169, 110, 0.05);
+      .cursor-ring.hover {
+        width: 56px;
+        height: 56px;
+        border-color: var(--accent);
+        background: rgba(200, 169, 110, 0.05);
+      }
     }
 
     section {

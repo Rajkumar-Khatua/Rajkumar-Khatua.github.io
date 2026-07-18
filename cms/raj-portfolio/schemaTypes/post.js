@@ -31,6 +31,32 @@ export const post = defineType({
       options: {hotspot: true},
     }),
     defineField({
+      name: 'clientIndustry',
+      title: 'Client Industry',
+      type: 'string',
+    }),
+    defineField({
+      name: 'toolsUsed',
+      title: 'Tools Used (e.g., CRM, Analytics, Books)',
+      type: 'array',
+      of: [{type: 'string'}],
+    }),
+    defineField({
+      name: 'businessProblem',
+      title: 'Business Problem',
+      type: 'text',
+    }),
+    defineField({
+      name: 'metricMoved',
+      title: 'Metric Moved (e.g., $40K/mo revenue leak found)',
+      type: 'string',
+    }),
+    defineField({
+      name: 'liveDemoUrl',
+      title: 'Live Demo URL',
+      type: 'url',
+    }),
+    defineField({
       name: 'publishedAt',
       title: 'Published At',
       type: 'datetime',

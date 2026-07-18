@@ -66,9 +66,9 @@ const projectId = 'kj3bgy2n';
                   <span class="blog-dot"></span>
                  <span class="blog-label">Case Study</span>
                 </div>
-                <h3 class="blog-card-title"><a href="post.html?slug=${slug}" style="color: inherit; text-decoration: none;">${postTitle}</a></h3>
+                <h3 class="blog-card-title"><a href="case-study-${slug}.html" style="color: inherit; text-decoration: none;">${postTitle}</a></h3>
                 <p class="blog-card-excerpt">${excerpt}</p>
-                <a class="blog-read" href="post.html?slug=${slug}">
+                <a class="blog-read" href="case-study-${slug}.html">
                   View Case Study <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
                 </a>
               </div>
