@@ -198,10 +198,11 @@ if (magnetForm) {
     e.preventDefault();
 
     const email = magnetForm.email.value.trim();
+    const name = magnetForm.name.value.trim();
     const subject = magnetForm._subject.value;
 
-    if (!email) {
-      alert('Please enter your email.');
+    if (!email || !name) {
+      alert('Please enter your name and email.');
       return;
     }
 
@@ -216,10 +217,11 @@ if (magnetForm) {
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          email,
+          Name: name,
+          Email: email,
           _subject: subject,
           Message: "A visitor on your website has requested the free 5-Point Zoho Analytics Audit Checklist!",
-          Action_Required: "Please reply to this email, attach the PDF checklist, and ask them about their current data reporting bottlenecks."
+          Action_Required: "The PDF was automatically downloaded for them! You can follow up with them directly at their email to see if they need help implementing it."
         })
       });
 
@@ -227,6 +229,13 @@ if (magnetForm) {
         magnetForm.reset();
         magnetForm.style.display = 'none';
         magnetSuccess.style.display = 'block';
+        
+        const a = document.createElement('a');
+        a.href = 'assets/5-Point-Zoho-Analytics-Audit-Checklist.pdf';
+        a.download = '5-Point-Zoho-Analytics-Audit-Checklist.pdf';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
         
         // Re-initialize Lucide icons for the new success icon
         if (typeof lucide !== 'undefined') {
