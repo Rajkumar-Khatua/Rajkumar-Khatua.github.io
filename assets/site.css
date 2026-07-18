@@ -2409,6 +2409,8 @@
   width: 32px;
   height: 32px;
   fill: currentColor;
+  margin-top: 2px;
+  margin-left: 2px;
 }
 
 .whatsapp-tooltip {
