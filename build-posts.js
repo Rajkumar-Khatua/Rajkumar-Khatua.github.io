@@ -178,12 +178,12 @@ async function build() {
             
             // Replace Image
             if (post.coverImage?.asset?.url) {
-                html = html.replace('<div id="coverWrap" class="article-cover" style="display:none;">', '<div id="coverWrap" class="article-cover" style="display:block;">');
-                html = html.replace('<img id="postImage" src="" alt="">', `<img id="postImage" src="${imageUrl}" alt="${title}">`);
+                html = html.replace('<div id="coverWrap" class="article-cover-wrap" style="display:none;">', '<div id="coverWrap" class="article-cover-wrap" style="display:block;">');
+                html = html.replace('<img id="postImage" class="article-cover" alt="" />', `<img id="postImage" class="article-cover" src="${imageUrl}" alt="${title}" />`);
             }
             
             // Replace Body
-            html = html.replace('<div id="postBody" class="article-body"></div>', `<div id="postBody" class="article-body">${bodyHtml}</div>`);
+            html = html.replace('<div id="postBody" class="content"></div>', `<div id="postBody" class="content">${bodyHtml}</div>`);
             
             // 3. Write HTML file
             const outPath = path.join(__dirname, `case-study-${slug}.html`);
