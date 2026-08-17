@@ -273,3 +273,25 @@ modal.addEventListener('click', (e) => {
 
 // Removed dead tsParticles logic as it's handled by network.js on canvas
 
+
+// FAQ Toggle
+document.querySelectorAll('.faq-question').forEach(button => {
+  button.addEventListener('click', () => {
+    const expanded = button.getAttribute('aria-expanded') === 'true';
+    
+    document.querySelectorAll('.faq-question').forEach(otherBtn => {
+      if (otherBtn !== button) {
+        otherBtn.setAttribute('aria-expanded', 'false');
+        otherBtn.nextElementSibling.style.maxHeight = null;
+      }
+    });
+    
+    button.setAttribute('aria-expanded', !expanded);
+    const answer = button.nextElementSibling;
+    if (!expanded) {
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+    } else {
+      answer.style.maxHeight = null;
+    }
+  });
+});
