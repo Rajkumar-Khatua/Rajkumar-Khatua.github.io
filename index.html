@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -107,9 +107,9 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" />
   </noscript>
 
-  <link rel="stylesheet" href="assets/site.css?v=2" />
+  <link rel="stylesheet" href="assets/site.css?v=9" />
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/navbar.css?v=2" />
+  <link rel="stylesheet" href="assets/css/navbar.css?v=7" />
   <script>const savedTheme = localStorage.getItem('theme') || 'light'; document.documentElement.setAttribute('data-theme', savedTheme);</script>
   <script src="https://unpkg.com/lucide@0.292.0"></script>
   <script src="assets/js/navbar.js"></script>
@@ -204,10 +204,59 @@
 </head>
 
 <body>
+  <div class="urgency-strip" id="urgencyStrip"><span>&#9889; Limited availability &mdash; <strong>2 project slots open for October</strong></span><a href="javascript:void(0);" data-cal-link="rajkumarkhatua/free-audit" data-cal-namespace="free-audit" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}' class="urgency-link">Book Your Audit &rarr;</a><button class="urgency-close" id="urgencyClose" aria-label="Close">&times;</button></div>
   <div class="cursor" id="cursor"></div>
   <div class="cursor-ring" id="cursorRing"></div>
 
-  <div id="navbar-container"></div>
+  <nav id="navbar">
+    <div class="nav-inner">
+    <a href="index.html#hero" class="nav-logo">RK<span>.</span></a>
+
+    <ul class="nav-links">
+      <li><a href="index.html#services" class="nav-item">Services</a></li>
+      <li><a href="index.html#problems" class="nav-item">Problems</a></li>
+      <li><a href="index.html#framework" class="nav-item">Framework</a></li>
+      <li><a href="index.html#projects" class="nav-item">Projects</a></li>
+      <li><a href="blog.html" class="nav-item">Case Studies</a></li>
+      <li><a href="index.html#resources" class="nav-item nav-highlight">Resources <i data-lucide="gift" style="width: 14px; height: 14px; margin-left: 4px; margin-bottom: 2px; vertical-align: middle;"></i></a></li>
+      <li><a href="index.html#about" class="nav-item">About</a></li>
+      <li><a href="index.html#contact" class="nav-item">Contact</a></li>
+      <li><button id="themeToggle" class="theme-btn" aria-label="Toggle Dark Mode"><i data-lucide="moon"></i></button></li>
+      <li><a href="javascript:void(0);" data-cal-link="rajkumarkhatua/free-audit" data-cal-namespace="free-audit" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}' class="nav-cta" id="navFreeAuditBtn">Free Audit</a></li>
+    </ul>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    </div>
+  </nav>
+
+  <div class="nav-backdrop" id="navBackdrop"></div>
+
+  <div class="mobile-menu" id="navLinks">
+    <div class="mobile-menu-header">
+      <a href="index.html#hero" class="mobile-menu-logo">RK<span>.</span></a>
+      <div style="display: flex; gap: 12px; align-items: center;">
+        <button id="themeToggleMobile" class="theme-btn mobile-theme-btn" aria-label="Toggle Dark Mode"><i data-lucide="moon"></i></button>
+        <button class="nav-close-btn" id="navCloseBtn" aria-label="Close menu">&times;</button>
+      </div>
+    </div>
+
+    <ul class="mobile-menu-links">
+      <li><a href="index.html#services" class="nav-item">Services</a></li>
+      <li><a href="index.html#problems" class="nav-item">Problems I Solve</a></li>
+      <li><a href="index.html#framework" class="nav-item">Framework</a></li>
+      <li><a href="index.html#projects" class="nav-item">Projects</a></li>
+      <li><a href="blog.html" class="nav-item">Case Studies</a></li>
+      <li><a href="index.html#resources" class="nav-item nav-highlight">Resources <i data-lucide="gift" style="width: 14px; height: 14px; margin-left: 4px; margin-bottom: 2px; vertical-align: middle;"></i></a></li>
+      <li><a href="index.html#about" class="nav-item">About</a></li>
+      <li><a href="index.html#contact" class="nav-item">Contact</a></li>
+    </ul>
+
+    <a href="javascript:void(0);" data-cal-link="rajkumarkhatua/free-audit" data-cal-namespace="free-audit" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}' class="mobile-hire-btn">Get Free Audit</a>
+  </div>
 
   <section id="hero">
     <canvas id="dataNetworkCanvas"></canvas>
@@ -245,6 +294,18 @@
       <div class="hero-btns">
         <a href="javascript:void(0);" data-cal-link="rajkumarkhatua/free-audit" data-cal-namespace="free-audit" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}' class="btn-dark">Get Free Audit</a>
         <a href="#projects" class="btn-outline">View Solutions</a>
+      </div>
+
+      <div class="hero-availability">
+        <span class="avail-dot"></span>
+        <span>Available for new projects</span>
+      </div>
+
+      <div class="hero-trust-badges">
+        <span class="trust-badge">&#10003; Free audit</span>
+        <span class="trust-badge">&#10003; No sales pitch</span>
+        <span class="trust-badge">&#10003; 30 minutes</span>
+        <span class="trust-badge">&#10003; Async-friendly</span>
       </div>
     </div>
 
@@ -808,7 +869,7 @@
           <div class="t-avatar">EC</div>
           <div>
             <div class="t-name">Eric Carey</div>
-            <div class="t-role">Revenue Operations &amp; Business Systems Leader · Supervisor</div>
+            <div class="t-role">Revenue Operations &amp; Business Systems Leader Â· Supervisor</div>
           </div>
         </div>
       </div>
@@ -825,7 +886,7 @@
           <div class="t-avatar">ZD</div>
           <div>
             <div class="t-name">Zachary Dugan</div>
-            <div class="t-role">Founder · Northforge Solutions</div>
+            <div class="t-role">Founder Â· Northforge Solutions</div>
           </div>
         </div>
       </div>
@@ -840,21 +901,28 @@
           <div class="t-avatar">GR</div>
           <div>
             <div class="t-name">German Rivera Medina</div>
-            <div class="t-role">Financial Analyst · Worked on the same team</div>
+            <div class="t-role">Financial Analyst Â· Worked on the same team</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="resources" class="magnet-section">
+  
+  <div class="testimonial-cta reveal">
+    <p class="tcta-text">Convinced? Let&#8217;s talk about your data.</p>
+    <a href="javascript:void(0);" data-cal-link="rajkumarkhatua/free-audit" data-cal-namespace="free-audit" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}' class="btn-dark">Book a Free 30-Min Audit</a>
+    <p class="tcta-sub">No obligation. No pitch. Just clarity on your Zoho setup.</p>
+  </div>
+
+<section id="resources" class="magnet-section">
     <div class="magnet-container reveal">
       <div class="magnet-content">
         <div class="magnet-badge">Free Resource</div>
         <h2>Not ready to hire yet?</h2>
         <p>Get my free <strong>5-Point Zoho Analytics Audit Checklist</strong> to discover hidden reporting bottlenecks and find out if your data is actually reliable.</p>
         <form id="magnetForm" class="magnet-form" action="https://formspree.io/f/mnjoaypg" method="POST">
-          <input type="hidden" name="_subject" value="🚀 LEAD MAGNET: Someone requested your Zoho Checklist!" />
+          <input type="hidden" name="_subject" value="ðŸš€ LEAD MAGNET: Someone requested your Zoho Checklist!" />
           <input type="text" name="name" placeholder="First Name" required />
           <input type="email" name="email" placeholder="Enter your best email..." required />
           <button type="submit" id="magnetSubmitBtn" class="btn-dark">Send me the Checklist <i data-lucide="arrow-right" class="btn-icon"></i></button>
@@ -878,16 +946,16 @@
   </section>
 
 
-  <section id="faq" style="padding: 6rem 0; border-top: 1px solid rgba(255,255,255,0.05); background: rgba(255,255,255,0.01);">
+    <section id="faq" style="padding: 6rem 6%; border-top: 1px solid var(--border); background: var(--bg);">
     <div class="reveal">
-      <div class="section-tag" style="margin-bottom: 1rem; text-align: center; margin-inline: auto;">Common Questions</div>
+      <div class="section-tag" style="margin-bottom: 1rem;">Common Questions</div>
     </div>
     <div class="reveal reveal-delay-1">
-      <h2 class="section-title" style="text-align: center; max-width: 600px; margin-inline: auto;">Clear Answers for <em>Clear Decisions</em></h2>
+      <h2 class="section-title" style="text-align: left; max-width: 600px;">Clear Answers for <em>Clear Decisions</em></h2>
     </div>
 
     <div class="faq-container reveal reveal-delay-2" style="max-width: 800px; margin: 3rem auto 0;">
-      <div style="margin: 2.5rem 0 1rem; font-size: 1.2rem; font-weight: 600; color: var(--accent); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem;">
+<div class="faq-category">
         Trust & Credibility
       </div>
       <div class="faq-item">
@@ -912,7 +980,7 @@
           </div>
         </div>
       </div>
-      <div style="margin: 2.5rem 0 1rem; font-size: 1.2rem; font-weight: 600; color: var(--accent); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem;">
+      <div class="faq-category">
         Scope
       </div>
       <div class="faq-item">
@@ -937,7 +1005,7 @@
           </div>
         </div>
       </div>
-      <div style="margin: 2.5rem 0 1rem; font-size: 1.2rem; font-weight: 600; color: var(--accent); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem;">
+      <div class="faq-category">
         Process & Timeline
       </div>
       <div class="faq-item">
@@ -973,7 +1041,7 @@
           </div>
         </div>
       </div>
-      <div style="margin: 2.5rem 0 1rem; font-size: 1.2rem; font-weight: 600; color: var(--accent); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem;">
+      <div class="faq-category">
         Pricing
       </div>
       <div class="faq-item">
@@ -987,7 +1055,7 @@
           </div>
         </div>
       </div>
-      <div style="margin: 2.5rem 0 1rem; font-size: 1.2rem; font-weight: 600; color: var(--accent); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem;">
+      <div class="faq-category">
         Logistics for remote/global clients
       </div>
       <div class="faq-item">
@@ -1012,8 +1080,7 @@
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </div></section>
 
   <section id="contact">
     <div class="reveal">
@@ -1031,12 +1098,12 @@
           setup to identify the biggest reporting, profitability, and decision-making gaps.
         </p>
 
-        <div style="margin: 2rem 0; padding: 1.5rem; background: rgba(34, 197, 94, 0.05); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0;">
+        <div class="engagements-box">
           <h3 style="font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem; color: #fff;">Typical Engagements</h3>
           <ul style="list-style: none; padding: 0; margin: 0; color: rgba(255,255,255,0.8); display: flex; flex-direction: column; gap: 0.8rem;">
-            <li style="display: flex; align-items: center; gap: 0.8rem;"><i data-lucide="check" style="color: var(--accent); width: 16px;"></i> <strong>Data & Analytics Audit:</strong> Free preliminary review</li>
-            <li style="display: flex; align-items: center; gap: 0.8rem;"><i data-lucide="check" style="color: var(--accent); width: 16px;"></i> <strong>Dashboard Build:</strong> Project-based flat rate</li>
-            <li style="display: flex; align-items: center; gap: 0.8rem;"><i data-lucide="check" style="color: var(--accent); width: 16px;"></i> <strong>Fractional BI Partner:</strong> Monthly retainer for ongoing optimization</li>
+            <li style="display: flex; align-items: flex-start; gap: 0.8rem;"><i data-lucide="check" style="color: var(--accent); width: 16px; flex-shrink: 0; margin-top: 4px;"></i> <span><strong>Data & Analytics Audit:</strong> Free preliminary review</span></li>
+            <li style="display: flex; align-items: flex-start; gap: 0.8rem;"><i data-lucide="check" style="color: var(--accent); width: 16px; flex-shrink: 0; margin-top: 4px;"></i> <span><strong>Dashboard Build:</strong> Project-based flat rate</span></li>
+            <li style="display: flex; align-items: flex-start; gap: 0.8rem;"><i data-lucide="check" style="color: var(--accent); width: 16px; flex-shrink: 0; margin-top: 4px;"></i> <span><strong>Fractional BI Partner:</strong> Monthly retainer for ongoing optimization</span></li>
           </ul>
         </div>
 
@@ -1157,7 +1224,7 @@
     Request Free Audit
   </button>
 
-  <script src="/assets/js/index.js"></script>
+  <script src="/assets/js/index.js" defer></script>
   
 
   <!-- Live Demo Modal -->

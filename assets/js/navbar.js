@@ -1,27 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const navbarContainer = document.getElementById("navbar-container");
+    const navbarContainer = document.getElementById("navbar");
     if (!navbarContainer) return;
 
-    fetch("components/navbar.html")
-        .then(response => {
-            if (!response.ok) throw new Error("Failed to load navbar");
-            return response.text();
-        })
-        .then(html => {
-            navbarContainer.innerHTML = html;
-            
-            // Re-render lucide icons if library is loaded
-            if (window.lucide) {
-                lucide.createIcons();
-            }
-            
-            initNavbarLogic();
-            highlightActiveLink();
-            
-            // Dispatch event so other scripts know navbar is ready
-            document.dispatchEvent(new Event("navbarLoaded"));
-        })
-        .catch(error => console.error("Error loading navbar:", error));
+    if (window.lucide) {
+        lucide.createIcons();
+    }
+    initNavbarLogic();
+    highlightActiveLink();
+    document.dispatchEvent(new Event("navbarLoaded"));
 
     function highlightActiveLink() {
         const path = window.location.pathname;

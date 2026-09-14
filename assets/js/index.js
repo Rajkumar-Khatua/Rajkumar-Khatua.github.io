@@ -1,4 +1,4 @@
-
+﻿
     // Navbar scroll moved to navbar.js
 
 
@@ -294,4 +294,22 @@ document.querySelectorAll('.faq-question').forEach(button => {
       answer.style.maxHeight = null;
     }
   });
+
+  // ── Urgency strip dismiss logic
+  const urgencyStrip = document.getElementById('urgencyStrip');
+  const urgencyClose = document.getElementById('urgencyClose');
+  const navbarEl = document.getElementById('navbar');
+  if (urgencyStrip) {
+    if (sessionStorage.getItem('urgencyDismissed')) {
+      urgencyStrip.classList.add('hidden');
+      if (navbarEl) navbarEl.classList.add('urgency-hidden');
+    }
+    if (urgencyClose) {
+      urgencyClose.addEventListener('click', () => {
+        urgencyStrip.classList.add('hidden');
+        if (navbarEl) navbarEl.classList.add('urgency-hidden');
+        sessionStorage.setItem('urgencyDismissed', '1');
+      });
+    }
+  }
 });
