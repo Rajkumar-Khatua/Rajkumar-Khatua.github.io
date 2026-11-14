@@ -25,9 +25,10 @@
       box-sizing: border-box;
     }
 
-    html {
+    html, body {
       scroll-behavior: smooth;
       overflow-x: hidden;
+      max-width: 100vw;
     }
 
     body {
@@ -1369,6 +1370,31 @@
       gap: 1rem;
       padding-top: 1.5rem;
       border-top: 1px solid rgba(13, 27, 42, 0.07);
+      flex-wrap: wrap;
+    }
+
+    .t-author > div:nth-child(2) {
+      flex: 1;
+      min-width: 140px;
+    }
+
+    .t-verify-wrap {
+      text-align: center;
+      margin-top: 2.5rem;
+      padding: 0 1rem;
+    }
+
+    .t-verify-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.92rem;
+      padding: 0.75rem 1.4rem;
+      max-width: 100%;
+      box-sizing: border-box;
+      white-space: normal;
+      text-align: center;
+      justify-content: center;
     }
 
     .t-linkedin-btn {
@@ -1777,9 +1803,19 @@
 
       #hero {
         grid-template-columns: 1fr;
-        padding-top: 6.25rem;
+        padding-top: 8rem;
         gap: 1.35rem;
         min-height: auto;
+      }
+
+      .hero-badge {
+        font-size: 0.66rem;
+        letter-spacing: 1.5px;
+        padding: 0.38rem 0.85rem;
+        white-space: normal;
+        text-align: center;
+        max-width: 100%;
+        margin-bottom: 1.25rem;
       }
 
       .hero-right {
@@ -2562,22 +2598,45 @@
 }
 .urgency-link:hover { border-bottom-color: #c8a96e; }
 .urgency-close {
-  position: absolute; right: 1rem; background: none; border: none;
-  color: rgba(255,255,255,0.35); font-size: 1.1rem; cursor: pointer;
-  transition: color 0.2s; line-height: 1; padding: 0 0.25rem;
+  position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); background: none; border: none;
+  color: rgba(255,255,255,0.45); font-size: 1.2rem; cursor: pointer;
+  transition: color 0.2s; line-height: 1; padding: 0.2rem 0.4rem;
 }
-.urgency-close:hover { color: rgba(255,255,255,0.9); }
-#navbar { top: 36px; transition: top 0.35s ease; }
-#navbar.urgency-hidden { top: 0; }
-@media (max-width: 600px) {
-  .urgency-strip { padding: 0.5rem 2.5rem; flex-wrap: wrap; text-align: center; justify-content: center; gap: 0.4rem; }
-  #navbar { top: 66px; }
+.urgency-close:hover { color: rgba(255,255,255,0.95); }
+#navbar { top: 0; transition: top 0.35s ease; }
+body:has(#urgencyStrip:not(.hidden)) #navbar { top: 38px; }
+#navbar.urgency-hidden { top: 0 !important; }
+@media (max-width: 768px) {
+  body:has(#urgencyStrip:not(.hidden)) #navbar { top: 54px; }
+  .urgency-strip {
+    padding: 0.45rem 2.2rem 0.45rem 0.75rem;
+    font-size: 0.73rem;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+    line-height: 1.35;
+  }
+  .urgency-strip span { font-size: 0.73rem; }
+  .urgency-link { font-size: 0.73rem; }
+  .urgency-close { right: 0.5rem; font-size: 1.15rem; }
+}
+@media (max-width: 480px) {
+  body:has(#urgencyStrip:not(.hidden)) #navbar { top: 56px; }
+  .urgency-strip {
+    padding: 0.4rem 2rem 0.4rem 0.6rem;
+    font-size: 0.7rem;
+    gap: 0.25rem;
+  }
+  .urgency-strip span { font-size: 0.7rem; }
+  .urgency-link { font-size: 0.7rem; }
 }
 
 /* ── Hero — Availability + Trust Badges ──────────── */
 .hero-availability {
   display: flex; align-items: center; gap: 0.6rem;
   margin-top: 1.25rem; font-size: 0.85rem; color: var(--text2);
+  flex-wrap: wrap;
 }
 .avail-dot {
   width: 8px; height: 8px; border-radius: 50%; background: #22c55e; flex-shrink: 0;
@@ -2646,6 +2705,124 @@
   .trust-badge { font-size: 0.7rem; padding: 0.2rem 0.55rem; }
   .testimonial-cta { padding: 2rem 1rem; }
   .tcta-text { font-size: 1.25rem; }
+  .t-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .t-card {
+    padding: 1.6rem 1.25rem;
+  }
+  .t-author {
+    gap: 0.75rem;
+  }
+  .t-author > div:nth-child(2) {
+    flex: 1 1 120px;
+    min-width: 110px;
+  }
+  .t-avatar {
+    width: 38px;
+    height: 38px;
+    font-size: 0.95rem;
+  }
+  .t-name {
+    font-size: 0.95rem;
+  }
+  .t-role {
+    font-size: 0.75rem;
+    line-height: 1.35;
+  }
+  .t-linkedin-btn {
+    font-size: 0.72rem;
+    padding: 0.25rem 0.55rem;
+  }
+  .t-verify-btn {
+    font-size: 0.82rem;
+    padding: 0.65rem 1rem;
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 480px) {
+  #hero {
+    padding-top: 8.5rem;
+  }
+  .hero-badge {
+    font-size: 0.62rem;
+    letter-spacing: 1px;
+    padding: 0.32rem 0.65rem;
+  }
+  .hero-btns {
+    flex-direction: column;
+    width: 100%;
+  }
+  .hero-btns .btn-dark,
+  .hero-btns .btn-outline {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+  .hero-stats {
+    gap: 1rem 0.75rem;
+  }
+  .hero-stats .stat-num {
+    font-size: 1.9rem;
+  }
+  .hero-stats .stat-lbl {
+    font-size: 0.66rem;
+    letter-spacing: 0.5px;
+  }
+  .t-card {
+    padding: 1.35rem 0.95rem;
+  }
+  .t-text {
+    font-size: 0.88rem;
+    line-height: 1.65;
+    margin-bottom: 1.5rem;
+  }
+  .t-author {
+    gap: 0.65rem;
+    padding-top: 1.25rem;
+  }
+  .t-author > div:nth-child(2) {
+    flex: 1 1 110px;
+    min-width: 100px;
+  }
+  .t-avatar {
+    width: 34px;
+    height: 34px;
+    font-size: 0.85rem;
+  }
+  .t-name {
+    font-size: 0.9rem;
+  }
+  .t-role {
+    font-size: 0.7rem;
+    line-height: 1.3;
+  }
+  .t-linkedin-btn {
+    font-size: 0.68rem;
+    padding: 0.2rem 0.45rem;
+  }
+  .t-verify-wrap {
+    margin-top: 1.8rem;
+    padding: 0 0.5rem;
+  }
+  .t-verify-btn {
+    font-size: 0.78rem;
+    padding: 0.65rem 0.75rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .t-verify-btn svg {
+    flex-shrink: 0;
+  }
+  .testimonial-cta {
+    padding: 1.75rem 1rem;
+    margin: 0 4% 2rem;
+  }
 }
 
 /* ✨ Form Transitions ✨ */

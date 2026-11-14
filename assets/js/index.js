@@ -296,19 +296,39 @@ document.querySelectorAll('.faq-question').forEach(button => {
     }
   });
 
-  // ── Urgency strip dismiss logic
+  // ── Urgency strip dismiss & responsive position logic
   const urgencyStrip = document.getElementById('urgencyStrip');
   const urgencyClose = document.getElementById('urgencyClose');
   const navbarEl = document.getElementById('navbar');
+
+  function syncNavbarPosition() {
+    if (!navbarEl) return;
+    if (urgencyStrip && !urgencyStrip.classList.contains('hidden')) {
+      const h = urgencyStrip.offsetHeight;
+      navbarEl.style.top = h + 'px';
+    } else {
+      navbarEl.style.top = '0px';
+    }
+  }
+
   if (urgencyStrip) {
     if (sessionStorage.getItem('urgencyDismissed')) {
       urgencyStrip.classList.add('hidden');
-      if (navbarEl) navbarEl.classList.add('urgency-hidden');
+      if (navbarEl) {
+        navbarEl.classList.add('urgency-hidden');
+        navbarEl.style.top = '0px';
+      }
+    } else {
+      syncNavbarPosition();
+      window.addEventListener('resize', syncNavbarPosition);
     }
     if (urgencyClose) {
       urgencyClose.addEventListener('click', () => {
         urgencyStrip.classList.add('hidden');
-        if (navbarEl) navbarEl.classList.add('urgency-hidden');
+        if (navbarEl) {
+          navbarEl.classList.add('urgency-hidden');
+          navbarEl.style.top = '0px';
+        }
         sessionStorage.setItem('urgencyDismissed', '1');
       });
     }
