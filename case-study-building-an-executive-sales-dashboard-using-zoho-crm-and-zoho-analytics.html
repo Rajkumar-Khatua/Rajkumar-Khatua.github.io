@@ -44,7 +44,7 @@
 
     <link rel="stylesheet" href="assets/css/post.css" />
     <link rel="stylesheet" href="assets/css/navbar.css" />
-    <script>const savedTheme = localStorage.getItem('theme') || 'light'; document.documentElement.setAttribute('data-theme', savedTheme);</script>
+    <script>(function(){ try { localStorage.removeItem('theme'); } catch(e){} if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) { document.documentElement.setAttribute('data-theme', 'dark'); } else { document.documentElement.removeAttribute('data-theme'); } })();</script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="assets/js/navbar.js"></script>
 
@@ -99,7 +99,6 @@
       <li><a href="index.html#resources" class="nav-item nav-highlight">Resources <i data-lucide="gift" style="width: 14px; height: 14px; margin-left: 4px; margin-bottom: 2px; vertical-align: middle;"></i></a></li>
       <li><a href="index.html#about" class="nav-item">About</a></li>
       <li><a href="index.html#contact" class="nav-item">Contact</a></li>
-      <li><button id="themeToggle" class="theme-btn" aria-label="Toggle Dark Mode"><i data-lucide="moon"></i></button></li>
       <li><a href="javascript:void(0);" data-cal-link="rajkumarkhatua/free-audit" data-cal-namespace="free-audit" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}' class="nav-cta" id="navFreeAuditBtn">Free Audit</a></li>
     </ul>
 
@@ -116,10 +115,7 @@
 <div class="mobile-menu" id="navLinks">
     <div class="mobile-menu-header">
       <a href="index.html#hero" class="mobile-menu-logo">RK<span>.</span></a>
-      <div style="display: flex; gap: 12px; align-items: center;">
-        <button id="themeToggleMobile" class="theme-btn mobile-theme-btn" aria-label="Toggle Dark Mode"><i data-lucide="moon"></i></button>
-        <button class="nav-close-btn" id="navCloseBtn" aria-label="Close menu">&times;</button>
-      </div>
+      <div><button class="nav-close-btn" id="navCloseBtn" aria-label="Close menu">&times;</button></div>
     </div>
 
     <ul class="mobile-menu-links">

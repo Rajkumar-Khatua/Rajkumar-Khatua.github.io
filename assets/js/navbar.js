@@ -90,51 +90,41 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
 
-        // Theme Toggle Logic
+        // Device Theme Matching Logic (Device Default)
         const htmlEl = document.documentElement;
+        try { localStorage.removeItem('theme'); } catch(e){}
         
-        function toggleThemeFunc() {
-            const isDark = htmlEl.getAttribute('data-theme') === 'dark';
-            const newTheme = isDark ? 'light' : 'dark';
-            
+        function applyDeviceTheme(e) {
+            const isDark = e ? e.matches : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
             if (isDark) {
-                htmlEl.removeAttribute('data-theme');
-                localStorage.setItem('theme', 'light');
-                if (themeBtn) themeBtn.innerHTML = '<i data-lucide="moon"></i>';
-                if (themeBtnMobile) themeBtnMobile.innerHTML = '<i data-lucide="moon"></i>';
-            } else {
                 htmlEl.setAttribute('data-theme', 'dark');
-                localStorage.setItem('theme', 'dark');
-                if (themeBtn) themeBtn.innerHTML = '<i data-lucide="sun"></i>';
-                if (themeBtnMobile) themeBtnMobile.innerHTML = '<i data-lucide="sun"></i>';
+            } else {
+                htmlEl.removeAttribute('data-theme');
             }
+            const activeTheme = isDark ? 'dark' : 'light';
             
             if (typeof Cal !== 'undefined' && Cal.ns && Cal.ns["free-audit"]) {
-                Cal.ns["free-audit"]("ui", { "theme": newTheme });
+                Cal.ns["free-audit"]("ui", { "theme": activeTheme });
             }
             
             document.querySelectorAll('[data-cal-namespace="free-audit"]').forEach(btn => {
                 try {
                     let config = JSON.parse(btn.getAttribute('data-cal-config') || '{}');
-                    config.theme = newTheme;
+                    config.theme = activeTheme;
                     btn.setAttribute('data-cal-config', JSON.stringify(config));
-                } catch(e) {}
+                } catch(err) {}
             });
-
-            if (window.lucide) {
-                lucide.createIcons();
+        }
+        
+        if (window.matchMedia) {
+            const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+            applyDeviceTheme(mediaQuery);
+            if (mediaQuery.addEventListener) {
+                mediaQuery.addEventListener('change', applyDeviceTheme);
+            } else if (mediaQuery.addListener) {
+                mediaQuery.addListener(applyDeviceTheme);
             }
         }
-
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            if (themeBtn) themeBtn.innerHTML = '<i data-lucide="sun"></i>';
-            if (themeBtnMobile) themeBtnMobile.innerHTML = '<i data-lucide="sun"></i>';
-            if (window.lucide) lucide.createIcons();
-        }
-
-        if (themeBtn) themeBtn.addEventListener('click', toggleThemeFunc);
-        if (themeBtnMobile) themeBtnMobile.addEventListener('click', toggleThemeFunc);
 
         // Cal.com Logic
         (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
