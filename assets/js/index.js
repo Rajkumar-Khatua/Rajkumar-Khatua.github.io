@@ -78,9 +78,10 @@
 
       if (rect.top < window.innerHeight * 0.8) {
         statNumbers.forEach((el, index) => {
-          if (index === 0) animateCount(el, 60, '%');
-          if (index === 1) animateCount(el, 20, 'h');
-          if (index === 2) animateCount(el, 6, '+');
+          if (index === 0) animateCount(el, 15, '+');
+          if (index === 1) animateCount(el, 60, '%');
+          if (index === 2) animateCount(el, 20, 'h');
+          if (index === 3) animateCount(el, 6, '+');
         });
         statsAnimated = true;
       }
