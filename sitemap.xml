@@ -2,56 +2,61 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://rajkumarkhatua.me/</loc>
+    <lastmod>2026-11-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://rajkumarkhatua.me/blog.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://rajkumarkhatua.me/case-study-test-auto-deployment-3rd-sep-live.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://rajkumarkhatua.me/case-study-Turning raw transactional data into an executive-ready decision-making tool..html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-11-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://rajkumarkhatua.me/case-study-zoho-books-financial-visibility-zoho-analytics.html</loc>
+    <lastmod>2026-11-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://rajkumarkhatua.me/case-study-a-zoho-analytics-dashboard-to-spot-project-risk-before-it-hurts-profit.html</loc>
+    <lastmod>2026-11-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://rajkumarkhatua.me/case-study-zoho-hr-performance-dashboard-case-study.html</loc>
+    <lastmod>2026-11-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://rajkumarkhatua.me/case-study-zoho-desk-kb-automation-mcp-bulk-article-creation.html</loc>
+    <lastmod>2026-11-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://rajkumarkhatua.me/case-study-your-zoho-analytics-data-is-there-your-ai-cannot-touch-it-yet.html</loc>
+    <lastmod>2026-11-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://rajkumarkhatua.me/case-study-zoho-workforce-roi-system.html</loc>
+    <lastmod>2026-11-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://rajkumarkhatua.me/case-study-building-an-executive-sales-dashboard-using-zoho-crm-and-zoho-analytics.html</loc>
+    <lastmod>2026-11-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rajkumarkhatua.me/case-study-turning-raw-transactional-data-executive-ready-power-bi-solution.html</loc>
+    <lastmod>2026-11-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
