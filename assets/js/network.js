@@ -42,10 +42,20 @@ if (canvas && hero) {
             this.color = color;
         }
         draw() {
+            // Soft fade on the left text area to preserve crystal-clear text contrast
+            let leftFade = 1;
+            if (canvas.width > 768 && this.x < canvas.width * 0.44) {
+                leftFade = Math.max(0, (this.x - 40) / (canvas.width * 0.44 - 40));
+            }
+            if (leftFade <= 0.04) return;
+
+            ctx.save();
+            ctx.globalAlpha = leftFade * 0.55;
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
             ctx.fillStyle = this.color;
             ctx.fill();
+            ctx.restore();
         }
         update() {
             if (this.x > canvas.width || this.x < 0) {
@@ -83,14 +93,13 @@ if (canvas && hero) {
 
     function init() {
         particlesArray = [];
-        // Adjust density
-        let numberOfParticles = (canvas.height * canvas.width) / 12000;
+        let numberOfParticles = (canvas.height * canvas.width) / 12500;
         for (let i = 0; i < numberOfParticles; i++) {
             let size = (Math.random() * 2) + 1;
             let x = (Math.random() * ((canvas.width - size * 2) - (size * 2)) + size * 2);
             let y = (Math.random() * ((canvas.height - size * 2) - (size * 2)) + size * 2);
-            let directionX = (Math.random() * 1.5) - 0.75;
-            let directionY = (Math.random() * 1.5) - 0.75;
+            let directionX = (Math.random() * 1.2) - 0.6;
+            let directionY = (Math.random() * 1.2) - 0.6;
             let color = Math.random() > 0.5 ? '#1a5cff' : '#c8a96e'; // Blue or Gold
             
             particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
@@ -107,23 +116,32 @@ if (canvas && hero) {
                 // Lines between nodes
                 if (distance < (canvas.width / 8) * (canvas.height / 8)) {
                     opacityValue = 1 - (distance / 15000);
-                    ctx.strokeStyle = `rgba(138, 138, 154, ${opacityValue * 0.4})`; // Grey lines
-                    ctx.lineWidth = 1;
-                    ctx.beginPath();
-                    ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-                    ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-                    ctx.stroke();
+                    let lineFade = 1;
+                    if (canvas.width > 768) {
+                        let avgX = (particlesArray[a].x + particlesArray[b].x) / 2;
+                        if (avgX < canvas.width * 0.44) {
+                            lineFade = Math.max(0, (avgX - 40) / (canvas.width * 0.44 - 40));
+                        }
+                    }
+                    if (lineFade > 0.04) {
+                        ctx.strokeStyle = `rgba(138, 138, 154, ${opacityValue * 0.18 * lineFade})`; // Soft, elegant lines
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.stroke();
+                    }
                 }
             }
             
-            // Connect to mouse with gold/blue line
+            // Connect to mouse with gold line
             if (mouse.x != null && mouse.y != null) {
                 let distanceToMouse = ((particlesArray[a].x - mouse.x) * (particlesArray[a].x - mouse.x))
                 + ((particlesArray[a].y - mouse.y) * (particlesArray[a].y - mouse.y));
                 
                 if (distanceToMouse < 20000) {
                     opacityValue = 1 - (distanceToMouse / 20000);
-                    ctx.strokeStyle = `rgba(200, 169, 110, ${opacityValue})`; // Gold lines pointing to mouse
+                    ctx.strokeStyle = `rgba(200, 169, 110, ${opacityValue * 0.7})`;
                     ctx.lineWidth = 1.2;
                     ctx.beginPath();
                     ctx.moveTo(particlesArray[a].x, particlesArray[a].y);

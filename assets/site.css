@@ -291,18 +291,19 @@
     }
 
     .hero-tagline {
-      font-size: 1.15rem;
-      font-weight: 300;
-      color: var(--text2);
-      margin-bottom: 0.6rem;
-      line-height: 1.6;
+      font-size: clamp(1.22rem, 2vw, 1.48rem);
+      font-weight: 400;
+      color: var(--heading-color);
+      margin-bottom: 0.75rem;
+      line-height: 1.45;
+      letter-spacing: -0.2px;
       opacity: 0;
       animation: fadeUp 0.8s 0.6s forwards;
     }
 
     .hero-tagline strong {
-      color: var(--heading-color);
-      font-weight: 500;
+      color: var(--blue);
+      font-weight: 600;
     }
 
     .hero-desc {
@@ -2587,10 +2588,30 @@
   0%,100% { box-shadow: 0 0 0 3px rgba(34,197,94,0.2); }
   50%      { box-shadow: 0 0 0 6px rgba(34,197,94,0.05); }
 }
-.hero-trust-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+.hero-trust-badges { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
 .trust-badge {
-  font-size: 0.75rem; color: var(--text2); border: 1px solid var(--border);
-  border-radius: 100px; padding: 0.25rem 0.7rem; background: var(--bg2);
+  font-size: 0.78rem; color: var(--text2); border: 1px solid rgba(13, 27, 42, 0.08);
+  border-radius: 100px; padding: 0.35rem 0.8rem; background: var(--bg2);
+  display: inline-flex; align-items: center; gap: 0.35rem; font-weight: 400;
+  transition: all 0.25s ease;
+}
+.trust-badge:hover {
+  border-color: var(--accent);
+  background: var(--white);
+  transform: translateY(-1px);
+}
+.hero-cta-btn {
+  background: linear-gradient(135deg, var(--navy), #172a3a);
+  border: 1px solid rgba(200, 169, 110, 0.45);
+  box-shadow: 0 6px 20px rgba(13, 27, 42, 0.16);
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hero-cta-btn:hover {
+  background: var(--blue);
+  border-color: var(--blue);
+  box-shadow: 0 8px 25px rgba(26, 92, 255, 0.35);
+  transform: translateY(-2px);
 }
 
 /* ── Testimonials CTA ─────────────────────────────── */
@@ -2642,4 +2663,16 @@
   background: #0284c7;
   color: #ffffff;
   border-color: #0284c7;
+}
+
+[data-theme="dark"] .hero-cta-btn {
+  background: linear-gradient(135deg, #1a5cff, #0040d0);
+  border-color: rgba(200, 169, 110, 0.4);
+  box-shadow: 0 6px 20px rgba(26, 92, 255, 0.35);
+}
+
+[data-theme="dark"] .trust-badge {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #cbd5e1;
 }
